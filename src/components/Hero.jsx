@@ -36,6 +36,10 @@ const Hero = () => {
             src={heroImage} 
             alt="Relawan Binar Community" 
             className="relative z-10 w-full max-w-[450px] lg:max-w-none lg:w-[115%] object-contain lg:translate-x-8 drop-shadow-sm"
+            style={{ 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', 
+              maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' 
+            }}
           />
         </div>
 

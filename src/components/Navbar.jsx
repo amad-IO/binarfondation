@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Button from './Button';
 
 const navLinks = [
@@ -67,8 +68,7 @@ const Navbar = () => {
           
           {/* Bagian Kiri: Logo */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              {/* Placeholder Logo Bebas */}
+            <div className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity">
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-inner">
                 B
               </div>
@@ -90,16 +90,20 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className={`px-3 py-2 text-sm font-bold transition-all duration-200 relative ${
+                className={`px-3 py-2 text-sm font-bold transition-colors duration-200 relative ${
                   activeSection === link.href.substring(1)
                     ? 'text-blue-600'
                     : 'text-slate-500 hover:text-blue-600'
                 }`}
               >
                 {link.name}
-                {/* Garis Bawah Aktif */}
+                {/* Garis Bawah Aktif dengan Animasi Geser Menggunakan Framer Motion */}
                 {activeSection === link.href.substring(1) && (
-                  <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-600 rounded-t-md"></span>
+                  <motion.span 
+                    layoutId="navbar-indicator"
+                    className="absolute bottom-0 left-3 right-3 h-[3px] bg-blue-600 rounded-t-md"
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
                 )}
               </a>
             ))}

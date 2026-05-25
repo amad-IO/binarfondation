@@ -7,39 +7,42 @@ Proyek ini adalah website *company profile* untuk **Yayasan Binar Community (Bin
 
 ##  Tech Stack
 - **Framework:** React + Vite
-- **Styling:** Tailwind CSS (dengan konfigurasi standar)
-- **Icons & Animations:** Lucide React & Framer Motion (jika diperlukan)
+- **Styling:** Tailwind CSS (dengan konfigurasi standar v4)
+- **Icons & Animations:** Lucide React & Framer Motion (`framer-motion` digunakan untuk animasi *layoutId* yang halus).
 - **Deployment:** Netlify
 
 ##  Struktur Folder Utama
-- `src/components/`: Kumpulan komponen UI yang dapat digunakan kembali (*reusable*).
-- `src/assets/`: Tempat penyimpanan aset statis seperti logo, gambar ilustrasi (`gambar 1.png`), dan bentuk background SVG (`curve1.svg`, `love.svg`, `love 1.svg`).
-- `src/pages/`: Folder untuk halaman jika nantinya menggunakan router (saat ini masih *single-page* di `App.jsx`).
-- `src/App.jsx`: Titik masuk utama (*entry point*) tempat semua seksi (Beranda/Hero, Tentang Kami, dll) digabungkan.
+- `src/components/`: Kumpulan komponen UI yang dapat digunakan kembali dan *section* halaman.
+- `src/assets/`: Tempat penyimpanan aset statis seperti gambar ilus, logo, dan SVG.
+- `src/App.jsx`: Titik masuk utama (*entry point*) tempat semua seksi digabungkan secara berurutan.
 
 ##  Daftar Komponen Utama
 1. **Button (`Button.jsx`)**
-   - Komponen tombol fleksibel dengan properti `variant`.
-   - Varian yang didukung: 
-     - `primary` (biru solid)
-     - `outline` (garis tepi biru)
-     - `ghost` (teks saja dengan *hover effect*)
-     - `accent` (latar krem dengan teks coklat, khusus digunakan untuk tombol donasi/spesial).
-   - Mendukung penyisipan ikon (seperti ikon SVG) melalui *children*.
+   - Komponen tombol fleksibel dengan varian `primary`, `outline`, `ghost`, dan `accent`.
 2. **Navbar (`Navbar.jsx`)**
-   - Menempel di bagian atas layar (`sticky/fixed`) dan berada di layer terdepan (`z-50`).
-   - Berfungsi sebagai navigasi internal halaman dengan sistem *smooth scroll* (menggunakan *anchor links* seperti `#beranda`, `#tentang-kami`).
+   - Menempel di bagian atas layar (`sticky/fixed`, `z-50`).
+   - Berfungsi sebagai navigasi internal dengan sistem *smooth scroll* asli browser.
+   - Menggunakan efek garis bawah aktif (*active indicator*) yang bergeser secara halus dengan `<motion.span layoutId="navbar-indicator">` dari `framer-motion`.
 3. **Hero / Beranda (`Hero.jsx`)**
-   - Dirancang agar memenuhi tinggi layar (`h-screen`).
-   - Sistem tata letak adaptif: Di HP berurutan (Teks -> Gambar -> Tombol), sedangkan di Desktop terbagi dua kolom (Kiri: Teks & Tombol, Kanan: Gambar).
+   - Dirancang agar memenuhi tinggi layar (`h-screen`). Memiliki masking memudar (*fade-out mask*) pada foto manusia agar menyatu dengan latar belakang. (`id="beranda"`)
+4. **Tentang & Program (`About.jsx` & `Programs.jsx`)**
+   - Seksi konten standar. (`id="tentang-kami"` & `id="program"`)
+5. **Impact Banner (`ImpactBanner.jsx`)**
+   - Spanduk biru yang memuat data statistik (kegiatan, penerima, relawan).
+   - **Penting:** Terdapat gambar (*pop-out image*) di sebelah kanan yang secara eksplisit dipaksa membesar menggunakan ukuran statis (seperti `w-[480px]`) agar menembus/melebihi batas kontainer biru tersebut.
+6. **Artikel & Open Recruitment (`ArticlesAndRecruitment.jsx`)**
+   - Menggunakan layout `grid-cols-3`. Kiri (2 kolom) untuk artikel (`id="edukasi"`), Kanan (1 kolom) untuk kotak *recruitment* dengan latar biru super muda (`id="relawan"`).
+7. **Support / Donasi (`SupportBanner.jsx`)**
+   - Spanduk kuning pucat dengan tombol CTA donasi (`id="donasi"`).
+8. **Footer (`Footer.jsx`)**
+   - Menggunakan logo "B Logo." asli (jangan diganti teks *stylized* kecuali diminta eksplisit). Terdapat navigasi dan kontak (`id="kontak"`).
 
 ##  ATURAN: Boleh Dilakukan (Do's)
-- **Gunakan Aset SVG Asli:** Untuk bentuk latar belakang yang kompleks (seperti gelombang), selalu `import` dan gunakan file `.svg` dari folder `assets`. Jangan mencoba membuat bentuk organik (*blob*) rumit menggunakan CSS murni karena tidak akan presisi.
-- **Anchor Bottom untuk Gambar Terpotong:** Jika gambar objek/manusia terpotong rata di bagian bawah (contoh: `gambar 1.png`), pastikan menggunakan kelas Tailwind `items-end` atau `bottom-0`. Hal ini penting agar gambar menempel sempurna di garis bawah layar dan tidak terlihat "melayang".
-- **Gunakan Komponen yang Ada:** Selalu panggil komponen `<Button />` dengan varian yang sesuai ketika membuat tombol baru, jangan membuat gaya CSS tombol dari awal di dalam halaman.
-- **Mobile-First Responsiveness:** Gunakan urutan fleksibel (`order-1`, `order-2`) di Tailwind untuk memastikan susunan elemen enak dilihat di HP sebelum menyesuaikannya untuk layar Desktop.
+- **Gunakan ID yang Sama dengan Menu:** Agar navigasi *smooth scroll* berfungsi sempurna, pastikan setiap *section* (Hero, Program, Footer, dll) memiliki properti `id` yang sama persis dengan `href` pada konfigurasi `navLinks` di Navbar.
+- **Gambar Pop-out:** Jika diminta membuat gambar membesar/meluap ke luar kotak, jangan gunakan `max-w`. Gunakan lebar pasti (`w-[400px] xl:max-w-none`) agar gambar benar-benar bisa lebih besar dari batas alami file-nya.
+- **Gunakan SVG Inline untuk Ikon Eror:** Jika paket ikon seperti `lucide-react` melempar *error build* (contoh: ekspor `Instagram` tidak ditemukan karena versi lawas), segera ganti dengan kode *inline SVG* murni untuk mencegah *blank screen*.
 
 ##  ATURAN: Tidak Boleh Dilakukan (Don'ts)
-- **Jangan Membuat Fitur Backend:** Proyek ini dideklarasikan sebagai *"frontend doang"*. Jangan menyarankan, mengonfigurasi, atau membangun fitur berbasis server (Node.js, database, API login backend, dsb).
-- **Jangan Menggunakan `import React`:** Proyek berjalan di Vite (React 17+). Dilarang keras menulis `import React from 'react'` di atas file komponen karena akan memicu peringatan/linting error *(React is defined but never used)*. Cukup import *hooks* yang dibutuhkan seperti `import { useState } from 'react'`.
-- **Jangan Menyisakan Celah Kosong di Bawah Layar Hero:** Kontainer bagian gambar tidak boleh memiliki padding bawah (`pb`) yang membuat gambar terpotong dan menciptakan ruang putih yang mengganggu estetika.
+- **Jangan Membuat Fitur Backend:** Proyek ini dideklarasikan sebagai *"frontend doang"*. Jangan membangun fitur berbasis server atau API eksternal.
+- **Jangan Menggunakan `import React`:** Proyek berjalan di Vite (React 17+).
+- **Jangan Gunakan Padding Kanan/Kiri Raksasa untuk Membatasi Teks:** Jika teks di sebuah kontainer terlalu panjang (seperti di `ImpactBanner`), batasi dengan membungkus teks menggunakan `w-[75%]` atau `max-w-2xl` daripada menggunakan *padding* berlebihan (`pr-[500px]`) yang akan merusak *layout* saat resolusi berubah.
