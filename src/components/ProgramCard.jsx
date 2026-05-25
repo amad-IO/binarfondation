@@ -1,6 +1,6 @@
 const ProgramCard = ({ image, title, description, linkText = "Lihat Selengkapnya", onLinkClick }) => {
   return (
-    <div className="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden shrink-0 w-[280px] sm:w-[320px] transition-transform duration-300 hover:shadow-md hover:-translate-y-1">
+    <div className="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden shrink-0 w-[280px] sm:w-[320px] transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2">
       {/* Gambar Program */}
       <div className="h-48 w-full bg-slate-100 overflow-hidden">
         {image ? (

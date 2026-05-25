@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import ProgramCard from './ProgramCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const programsData = [
   {
@@ -70,7 +71,13 @@ const Programs = () => {
 
   return (
     <section id="program" className="w-full py-16 lg:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="container mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -127,7 +134,7 @@ const Programs = () => {
           <p className="text-xs text-slate-400">Geser untuk melihat program lainnya ➔</p>
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };
