@@ -1,58 +1,85 @@
+import { useState, useEffect, useRef } from 'react';
 import impactImage from '../assets/gambar 2.png';
 import { Calendar, Heart, Users } from 'lucide-react';
+import { useInView } from 'framer-motion';
+
+const AnimatedNumber = ({ value, duration = 2000, prefix = "+ " }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = null;
+    let animationFrame;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      // easeOutExpo untuk pergerakan awal cepat lalu melambat
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCount(Math.floor(easeProgress * value));
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      }
+    };
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [inView, value, duration]);
+
+  return <span ref={ref}>{prefix}{count.toLocaleString('id-ID')}</span>;
+};
 
 const ImpactBanner = () => {
   return (
     <section className="w-full bg-[#3668C6] mt-16 lg:mt-24 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative h-full">
         
-        {/* Kontainer Flex utama dibatasi 75% lebar di desktop agar tidak nabrak gambar */}
-        <div className="flex flex-col xl:flex-row items-center justify-between py-8 lg:py-10 gap-8 lg:gap-10 w-full xl:w-[75%]">
+        {/* Kontainer Flex utama dibatasi 85% lebar di desktop agar tidak nabrak gambar */}
+        <div className="flex flex-col xl:flex-row items-center justify-center xl:justify-start py-8 lg:py-10 gap-8 xl:gap-16 w-full xl:w-[85%]">
           
-          {/* Kolom Kiri: Teks */}
-          <div className="flex-1 text-center xl:text-left z-10">
-            <h2 className="text-2xl lg:text-[2rem] font-bold text-white mb-2 leading-snug tracking-tight">
-              Bersama, kita bisa jadi cahaya <br className="hidden xl:block" />
+          <div className="text-center xl:text-left z-10 shrink-0">
+            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3 leading-snug tracking-normal">
+              <span className="xl:whitespace-nowrap">Bersama, kita bisa jadi cahaya</span> <br className="hidden sm:block" />
               untuk lebih banyak jiwa
             </h2>
-            <p className="text-blue-100 text-sm lg:text-base">
+            <p className="text-blue-100 text-sm lg:text-base font-medium">
               Yuk jadi bagian dari gerakan kebaikan ini!
             </p>
           </div>
 
           {/* Kolom Tengah: Statistik */}
-          <div className="flex flex-col sm:flex-row flex-wrap xl:flex-nowrap justify-center items-center gap-6 sm:gap-6 lg:gap-8 z-10">
+          <div className="flex flex-col sm:flex-row flex-wrap xl:flex-nowrap justify-center items-center gap-4 sm:gap-5 lg:gap-6 z-10">
             
             {/* Stat 1 */}
-            <div className="flex items-center gap-3 lg:gap-4 shrink-0">
-              <Calendar size={56} strokeWidth={1} color="white" className="w-12 h-12 lg:w-14 lg:h-14" />
+            <div className="flex items-center gap-3 shrink-0">
+              <Calendar size={48} strokeWidth={1} color="white" className="w-10 h-10 lg:w-12 lg:h-12" />
               <div className="text-left">
-                <div className="text-2xl lg:text-3xl font-bold text-white">+ 50</div>
-                <div className="text-xs lg:text-sm font-medium text-blue-100">Kegiatan</div>
+                <div className="text-xl lg:text-2xl font-bold text-white"><AnimatedNumber value={50} /></div>
+                <div className="text-xs font-medium text-blue-100">Kegiatan</div>
               </div>
             </div>
             
             {/* Garis Pemisah */}
-            <div className="hidden sm:block w-px h-12 lg:h-14 bg-white/40"></div>
+            <div className="hidden sm:block w-px h-10 lg:h-12 bg-white/40"></div>
 
             {/* Stat 2 */}
-            <div className="flex items-center gap-3 lg:gap-4 shrink-0">
-              <Heart size={56} strokeWidth={1} color="white" className="w-12 h-12 lg:w-14 lg:h-14" />
+            <div className="flex items-center gap-3 shrink-0">
+              <Heart size={48} strokeWidth={1} color="white" className="w-10 h-10 lg:w-12 lg:h-12" />
               <div className="text-left">
-                <div className="text-2xl lg:text-3xl font-bold text-white">+ 50.000</div>
-                <div className="text-xs lg:text-sm font-medium text-blue-100">Penerima Manfaat</div>
+                <div className="text-xl lg:text-2xl font-bold text-white"><AnimatedNumber value={50000} duration={2500} /></div>
+                <div className="text-xs font-medium text-blue-100">Penerima Manfaat</div>
               </div>
             </div>
 
             {/* Garis Pemisah */}
-            <div className="hidden sm:block w-px h-12 lg:h-14 bg-white/40"></div>
+            <div className="hidden sm:block w-px h-10 lg:h-12 bg-white/40"></div>
 
             {/* Stat 3 */}
-            <div className="flex items-center gap-3 lg:gap-4 shrink-0">
-              <Users size={56} strokeWidth={1} color="white" className="w-12 h-12 lg:w-14 lg:h-14" />
+            <div className="flex items-center gap-3 shrink-0">
+              <Users size={48} strokeWidth={1} color="white" className="w-10 h-10 lg:w-12 lg:h-12" />
               <div className="text-left">
-                <div className="text-2xl lg:text-3xl font-bold text-white">+ 300</div>
-                <div className="text-xs lg:text-sm font-medium text-blue-100">Relawan Aktif</div>
+                <div className="text-xl lg:text-2xl font-bold text-white"><AnimatedNumber value={300} /></div>
+                <div className="text-xs font-medium text-blue-100">Relawan Aktif</div>
               </div>
             </div>
 

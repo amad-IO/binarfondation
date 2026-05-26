@@ -3,11 +3,21 @@ import loveIcon from '../assets/love.svg';
 import loveDonate from '../assets/love 1.svg';
 import heroImage from '../assets/gambar 1.png';
 import curveShape from '../assets/curve1.svg';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = () => {
+  const { scrollY } = useScroll();
+  // Opacity will go from 1 to 0 as user scrolls from 0 to 400px
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  // Split effect: left content moves left, right content moves right
+  const xLeft = useTransform(scrollY, [0, 400], [0, -200]);
+  const xRight = useTransform(scrollY, [0, 400], [0, 200]);
+
   return (
-    <section id="beranda" className="relative w-full h-screen min-h-[650px] flex items-center pt-20 overflow-hidden bg-white">
+    <section 
+      id="beranda" 
+      className="relative w-full h-screen min-h-[650px] flex items-center pt-20 overflow-hidden bg-white"
+    >
       {/* Subtle Glow Background */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-20">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-100/50 rounded-full blur-[100px]"></div>
@@ -21,10 +31,11 @@ const Hero = () => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
+          style={{ x: xLeft, opacity }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-end lg:justify-center z-10 pt-4 lg:pt-0 pb-10 lg:pb-0"
         >
-          <h1 className="text-[2.5rem] sm:text-5xl lg:text-[4rem] font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
+          <h1 className="text-[2.5rem] sm:text-5xl lg:text-[4rem] font-semibold text-slate-900/90 leading-[1.1] mb-6 tracking-tight">
             Ruang Aman <br className="hidden sm:block" />
             untuk Tumbuh & <br className="hidden sm:block" />
             Pulih Bersama
@@ -39,6 +50,7 @@ const Hero = () => {
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
+          style={{ x: xRight, opacity }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="order-2 lg:col-start-2 lg:row-span-2 relative flex items-end justify-center w-full h-full min-h-[300px] lg:min-h-0 z-0"
         >
@@ -46,24 +58,38 @@ const Hero = () => {
           <img 
             src={curveShape} 
             alt="Background Curve" 
-            className="absolute -z-10 w-[180%] sm:w-[150%] lg:w-[145%] max-w-none bottom-0 right-[-10%] lg:right-[-25%] object-contain"
+            className="absolute -z-10 w-[200%] sm:w-[170%] lg:w-[175%] max-w-none bottom-0 right-[-15%] lg:right-[-35%] object-contain"
           />
           
           <img 
             src={heroImage} 
             alt="Relawan Binar Community" 
             className="relative z-10 w-full max-w-[450px] lg:max-w-none lg:w-[115%] object-contain lg:translate-x-8 drop-shadow-sm"
-            style={{ 
-              WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', 
-              maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' 
-            }}
           />
+
+          {/* Floating Bubble #Berbinar Untuk Bersinar */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1, duration: 0.5, type: "spring", stiffness: 200 }}
+            className="absolute top-2 right-0 sm:top-8 sm:right-2 lg:top-10 lg:-right-4 z-20"
+          >
+            <div className="relative group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:scale-105 rotate-3 hover:rotate-6">
+              <div className="bg-[#FFF4D2] px-4 py-2 lg:px-5 lg:py-3 rounded-[1.25rem] shadow-lg shadow-yellow-900/10 border border-yellow-200/50">
+                <span className="font-bold text-slate-800 text-xs sm:text-sm lg:text-base leading-snug block">
+                  #Berbinar <br /> Untuk Bersinar ✨
+                </span>
+              </div>
+              <div className="absolute -bottom-1.5 left-6 w-4 h-4 bg-[#FFF4D2] rotate-45 border-r border-b border-yellow-200/50 rounded-sm"></div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* BUTTONS AREA (Mobile: Bawah, Desktop: Kiri Bawah) */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          style={{ x: xLeft, opacity }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="order-3 lg:col-start-1 lg:row-start-2 flex flex-wrap items-start gap-3 sm:gap-4 z-10 mt-2 lg:mt-0"
         >

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { name: 'Beranda', href: '#beranda' },
@@ -15,6 +16,7 @@ const navLinks = [
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('beranda');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Handle scroll untuk efek background/shadow dan indikator active menu
   useEffect(() => {
@@ -52,6 +54,7 @@ const Navbar = () => {
         behavior: 'smooth',
       });
       setActiveSection(targetId);
+      setIsMobileMenuOpen(false); // Tutup menu mobile setelah klik
     }
   };
 
@@ -62,13 +65,13 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pointer-events-auto">
-        <div className={`flex items-center justify-between px-6 py-3 mx-auto max-w-6xl bg-white/95 backdrop-blur-md rounded-2xl border transition-all duration-300 ${
+        <div className={`flex items-center justify-between px-4 sm:px-6 py-3 mx-auto max-w-6xl bg-white/95 backdrop-blur-md rounded-2xl border transition-all duration-300 relative ${
           isScrolled ? 'shadow-lg border-gray-100' : 'shadow-sm border-gray-100'
         }`}>
           
           {/* Bagian Kiri: Logo */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity">
+            <div className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity" onClick={(e) => scrollToSection(e, '#beranda')}>
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-inner">
                 B
               </div>
@@ -90,9 +93,9 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className={`px-3 py-2 text-sm font-bold transition-colors duration-200 relative ${
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 relative ${
                   activeSection === link.href.substring(1)
-                    ? 'text-blue-600'
+                    ? 'text-blue-600 font-semibold'
                     : 'text-slate-500 hover:text-blue-600'
                 }`}
               >
@@ -109,12 +112,57 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Bagian Kanan: Button Gabung Komunitas */}
-          <div className="flex items-center">
-            <Button variant="primary" className="text-sm px-5 py-2">
-              Gabung Komunitas
-            </Button>
+          {/* Bagian Kanan: Button Gabung Komunitas & Hamburger */}
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex">
+              <Button variant="primary" className="text-sm px-5 py-2">
+                Gabung Komunitas
+              </Button>
+            </div>
+            
+            {/* Hamburger Button untuk Mobile */}
+            <button 
+              className="lg:hidden p-1.5 text-slate-600 hover:text-blue-600 transition-colors focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X size={26} strokeWidth={2.5} /> : <Menu size={26} strokeWidth={2.5} />}
+            </button>
           </div>
+
+          {/* Mobile Menu Dropdown */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-[calc(100%+12px)] left-0 right-0 bg-white rounded-2xl shadow-xl border border-gray-100 p-5 flex flex-col gap-2 lg:hidden overflow-hidden"
+              >
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => scrollToSection(e, link.href)}
+                    className={`px-4 py-3 text-base font-medium rounded-xl transition-colors duration-200 flex items-center ${
+                      activeSection === link.href.substring(1)
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-blue-600'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <div className="mt-4 pt-4 border-t border-gray-100 sm:hidden">
+                  <Button variant="primary" className="w-full text-base py-3">
+                    Gabung Komunitas
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
         </div>
       </div>
     </header>

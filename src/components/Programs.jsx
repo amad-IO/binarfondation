@@ -107,7 +107,7 @@ const Programs = () => {
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-4 px-2"
           >
             {programsData.map((program) => (
-              <div key={program.id} className="snap-start shrink-0">
+              <div key={program.id} className="snap-start shrink-0 flex">
                 <ProgramCard 
                   title={program.title}
                   description={program.description}
