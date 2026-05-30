@@ -1,11 +1,12 @@
 import { ArrowRight } from 'lucide-react';
 import Button from '../components/Button';
 import { motion } from 'framer-motion';
+import registrationImage from '../assets/registration.svg';
 
 const ArticlesAndRecruitment = () => {
     return (
-        <section id="edukasi" className="w-full mt-12 lg:mt-20 overflow-hidden">
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
+        <section id="edukasi" className="w-full mt-12 lg:mt-20">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8 items-stretch">
 
                 {/* Kiri: Artikel Terbaru (Takes 2 columns on XL) */}
                 <motion.div
@@ -68,7 +69,7 @@ const ArticlesAndRecruitment = () => {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     id="relawan"
-                    className="xl:col-span-1 bg-[#F4F8FF] rounded-[2rem] p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden shadow-sm border border-blue-50/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1"
+                    className="xl:col-span-1 h-full bg-[#F4F8FF] rounded-[2rem] p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden shadow-sm border border-blue-50/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1"
                 >
                     <div className="relative z-10">
                         <h3 className="text-xl lg:text-2xl font-bold text-slate-800 mb-4">Open Recruitment Relawan</h3>
@@ -80,10 +81,12 @@ const ArticlesAndRecruitment = () => {
                         </Button>
                     </div>
 
-                    {/* Illustration Placeholder (Asset kosong) */}
-                    <div className="absolute bottom-0 right-0 w-3/4 h-1/2 bg-blue-100/50 rounded-tl-full z-0 flex items-end justify-end p-6 text-blue-300 text-sm font-medium">
-                        [Aset Kosong]
-                    </div>
+                    {/* Illustration Asset */}
+                    <img
+                        src={registrationImage}
+                        alt="Ilustrasi Relawan"
+                        className="absolute bottom-0 right-0 w-[80%] max-w-[220px] lg:max-w-[280px] object-contain object-bottom z-0"
+                    />
                 </motion.div>
 
             </div>
