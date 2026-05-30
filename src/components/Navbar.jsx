@@ -110,7 +110,7 @@ const Navbar = () => {
                     {/* Bagian Kanan: Button Gabung Komunitas & Hamburger */}
                     <div className="flex items-center gap-3">
                         <div className="hidden sm:flex">
-                            <Button variant="primary" className="text-sm px-5 py-2">
+                            <Button variant="primary" className="text-sm px-5 py-2" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>
                                 Gabung Komunitas
                             </Button>
                         </div>
@@ -149,7 +149,7 @@ const Navbar = () => {
                                     </a>
                                 ))}
                                 <div className="mt-4 pt-4 border-t border-gray-100 sm:hidden">
-                                    <Button variant="primary" className="w-full text-base py-3">
+                                    <Button variant="primary" className="w-full text-base py-3" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>
                                         Gabung Komunitas
                                     </Button>
                                 </div>

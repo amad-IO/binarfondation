@@ -76,7 +76,7 @@ const ArticlesAndRecruitment = () => {
                         <p className="text-slate-600 text-sm leading-relaxed mb-8 xl:max-w-[85%]">
                             Yuk bergabung jadi relawan Binar dan berkontribusi untuk kesehatan mental anak dan remaja Indonesia.
                         </p>
-                        <Button variant="primary" className="flex items-center gap-2 text-sm px-6 py-3 w-max">
+                        <Button variant="primary" className="flex items-center gap-2 text-sm px-6 py-3 w-max" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>
                             Daftar Sekarang <ArrowRight size={16} />
                         </Button>
                     </div>

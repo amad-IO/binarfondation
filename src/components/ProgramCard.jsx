@@ -1,3 +1,5 @@
+import { ArrowRight } from 'lucide-react';
+
 const ProgramCard = ({ image, title, description, linkText = "Lihat Selengkapnya", onLinkClick }) => {
   return (
     <div className="flex flex-col h-full bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden shrink-0 w-[280px] sm:w-[320px] transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2">
@@ -25,10 +27,11 @@ const ProgramCard = ({ image, title, description, linkText = "Lihat Selengkapnya
         
         {/* Tombol Link */}
         <button 
-          onClick={onLinkClick}
-          className="text-blue-600 font-semibold text-sm hover:text-blue-700 self-start hover:underline decoration-2 underline-offset-4 transition-all"
+            onClick={() => window.dispatchEvent(new Event('show-maintenance'))}
+            className="flex items-center gap-2 mt-4 lg:mt-6 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group"
         >
-          {linkText}
+            Lihat Selengkapnya
+            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </div>

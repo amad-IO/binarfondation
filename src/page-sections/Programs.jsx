@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import ProgramCard from '../components/ProgramCard';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const programsData = [
@@ -87,6 +87,13 @@ const Programs = () => {
                     <p className="text-slate-500 text-lg max-w-2xl mx-auto">
                         Berbagai program untuk mendukung kesehatan mental anak dan remaja
                     </p>
+                    <button 
+                        onClick={() => window.dispatchEvent(new Event('show-maintenance'))}
+                        className="group flex items-center justify-between w-full mt-6 px-6 py-4 bg-white hover:bg-blue-50 border border-slate-100 rounded-xl transition-all duration-300"
+                    >
+                        <span className="font-semibold text-blue-600">Lihat Selengkapnya</span>
+                        <ArrowRight className="w-5 h-5 text-blue-600 transform group-hover:translate-x-2 transition-transform duration-300" />
+                    </button>
                 </div>
 
                 {/* Slider Area */}

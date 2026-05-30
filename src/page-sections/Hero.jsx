@@ -93,8 +93,8 @@ const Hero = () => {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="order-3 lg:col-start-1 lg:row-start-2 flex flex-wrap items-start gap-3 sm:gap-4 z-10 mt-2 lg:mt-0"
                 >
-                    <Button variant="primary">Gabung komunitas</Button>
-                    <Button variant="outline">Jadi Relawan</Button>
+                    <Button variant="primary" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>Gabung komunitas</Button>
+                    <Button variant="outline" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>Jadi Relawan</Button>
                     {/* Tombol Donasi dengan Ikon */}
                     <Button variant="accent" className="flex items-center gap-2">
                         <img src={loveDonate} alt="Love icon" className="w-4 h-4" />

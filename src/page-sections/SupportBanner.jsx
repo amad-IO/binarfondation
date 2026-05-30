@@ -14,8 +14,11 @@ const SupportBanner = () => {
         </div>
 
         {/* Tombol Donasi */}
-        <button className="bg-[#FCD368] hover:bg-[#f0c558] transition-colors text-slate-800 font-bold py-3 lg:py-4 px-6 lg:px-8 rounded-full flex items-center gap-2 whitespace-nowrap shadow-sm">
-          Donasi Sekarang <Heart size={20} strokeWidth={2} />
+        <button 
+            onClick={() => window.dispatchEvent(new Event('show-maintenance'))}
+            className="bg-[#FCD368] hover:bg-[#f0c558] transition-colors text-slate-800 font-bold py-3 lg:py-4 px-6 lg:px-8 rounded-full flex items-center gap-2 whitespace-nowrap shadow-sm"
+        >
+            Donasi Sekarang <Heart size={20} className="fill-slate-800" />
         </button>
 
       </div>

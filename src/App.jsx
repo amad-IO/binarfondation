@@ -7,6 +7,8 @@ import ArticlesAndRecruitment from './page-sections/ArticlesAndRecruitment';
 import SupportBanner from './page-sections/SupportBanner';
 import Footer from './components/Footer';
 
+import MaintenanceNotification from './components/MaintenanceNotification';
+
 function App() {
     return (
         <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
@@ -38,6 +40,8 @@ function App() {
 
             {/* Bagian Kaki (Footer) */}
             <Footer />
+            
+            <MaintenanceNotification />
         </div>
     );
 }

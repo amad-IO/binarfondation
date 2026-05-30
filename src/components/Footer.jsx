@@ -1,98 +1,146 @@
-import { Mail, Phone } from 'lucide-react';
-import logoImage from '../assets/logo 2.PNG';
+import logo2 from '../assets/logo 2.PNG';
 
-const InstagramIcon = ({ size = 14, strokeWidth = 2.5 }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-    </svg>
-);
+const menuLinks = [
+    { name: 'Beranda', href: '#beranda' },
+    { name: 'Tentang Kami', href: '#tentang-kami' },
+    { name: 'Program Kami', href: '#program' },
+    { name: 'Edukasi', href: '#edukasi' },
+];
+
+const bergabungLinks = [
+    { name: 'Relawan', href: '#relawan' },
+    { name: 'Gabung Komunitas', href: '#gabung' },
+    { name: 'Kerja Sama', href: '#kerja-sama' },
+];
+
+const dukungLinks = [
+    { name: 'Donasi', href: '#donasi' },
+    { name: 'Sponsorship', href: '#sponsorship' },
+    { name: 'Media Partner', href: '#media-partner' },
+];
 
 const Footer = () => {
     return (
-        <footer id="kontak" className="w-full bg-white pt-12 lg:pt-16 mt-auto">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-                <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 xl:gap-16">
+        <footer className="bg-white border-t border-gray-100 mt-16 font-sans">
+            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+                
+                {/* Mengurangi gap di sini akan membuat bagian menu bergeser ke kiri */}
+                <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-8 xl:gap-10">
 
-                    {/* Logo & Deskripsi (Lebih lebar) */}
-                    <div className="lg:w-[35%] xl:w-[40%] shrink-0 pr-4">
-                        <div className="flex items-center -ml-3 lg:-ml-5 -mb-12 lg:-mb-20">
-                            <img src={logoImage} alt="Logo" className="w-[160px] sm:w-[180px] md:w-[200px] lg:w-[240px] object-contain object-left pointer-events-none" />
+                    {/* Kolom 1: Logo & Deskripsi */}
+                    <div className="w-full lg:max-w-[380px] xl:max-w-[420px] shrink-0">
+                        <div className="-mt-8 -mb-6 -ml-7">
+                            <img
+                                src={logo2}
+                                alt="Binar Foundation Logo"
+                                className="w-48 sm:w-52 object-contain object-left"
+                            />
                         </div>
-                        <p className="text-slate-500 text-sm leading-relaxed pr-4 font-medium relative z-10">
-                            Yayasan Binar Community adalah organisasi nirlaba yang bergerak di bidang kesehatan mental dan pendidikan anak serta remaja di Indonesia.
+                        <p className="-mt-10 text-[14px] font-medium text-slate-500 leading-relaxed pr-2">
+                            Yayasan Binar Community adalah organisasi nirlaba yang bergerak di
+                            bidang kesehatan mental dan pendidikan anak serta remaja di Indonesia.
                         </p>
                     </div>
 
-                    {/* Links Wrapper */}
-                    <div className="flex-1 flex flex-wrap sm:flex-nowrap justify-between gap-8 lg:gap-4 xl:gap-8">
-
+                    {/* Kolom 2-5: Menu, Bergabung, Dukung, Kontak */}
+                    <div className="flex-1 flex flex-wrap sm:flex-nowrap justify-between gap-8 lg:gap-4 xl:gap-8 pt-2">
+                        
                         {/* Menu */}
-                        <div className="w-[45%] sm:w-auto shrink-0">
-                            <h4 className="font-extrabold text-slate-800 mb-4 text-[15px]">Menu</h4>
-                            <ul className="space-y-3 text-sm text-slate-500 font-medium">
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Beranda</a></li>
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Tentang Kami</a></li>
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Program Kami</a></li>
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Edukasi</a></li>
+                        <div className="min-w-[120px]">
+                            {/* Font size dibesarkan dari 16px ke 18px */}
+                            <h4 className="text-[18px] font-extrabold text-slate-900 mb-6">Menu</h4>
+                            <ul className="space-y-4">
+                                {menuLinks.map((link) => (
+                                    <li key={link.name}>
+                                        {/* Font size dibesarkan dari 14px ke 16px */}
+                                        <a href={link.href} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
                         {/* Bergabung */}
-                        <div className="w-[45%] sm:w-auto shrink-0">
-                            <h4 className="font-extrabold text-slate-800 mb-4 text-[15px]">Bergabung</h4>
-                            <ul className="space-y-3 text-sm text-slate-500 font-medium">
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Relawan</a></li>
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Gabung Komunitas</a></li>
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Kerja Sama</a></li>
+                        <div className="min-w-[140px]">
+                            <h4 className="text-[18px] font-extrabold text-slate-900 mb-6">Bergabung</h4>
+                            <ul className="space-y-4">
+                                {bergabungLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <a href={link.href} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
                         {/* Dukung Kami */}
-                        <div className="w-[45%] sm:w-auto shrink-0">
-                            <h4 className="font-extrabold text-slate-800 mb-4 text-[15px]">Dukung Kami</h4>
-                            <ul className="space-y-3 text-sm text-slate-500 font-medium">
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Donasi</a></li>
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Sponsorship</a></li>
-                                <li><a href="#" className="hover:text-blue-600 transition-colors">Media Partner</a></li>
+                        <div className="min-w-[130px]">
+                            <h4 className="text-[18px] font-extrabold text-slate-900 mb-6">Dukung Kami</h4>
+                            <ul className="space-y-4">
+                                {dukungLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <a href={link.href} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
                         {/* Kontak Kami */}
-                        <div className="w-[45%] sm:w-auto shrink-0">
-                            <h4 className="font-extrabold text-slate-800 mb-4 text-[15px]">Kontak Kami</h4>
-                            <ul className="space-y-4 text-sm text-slate-500 font-medium">
-                                <li className="flex items-center gap-3">
-                                    <div className="bg-blue-600 p-1.5 rounded-full text-white shrink-0">
-                                        <Mail size={14} strokeWidth={2.5} />
-                                    </div>
-                                    <a href="mailto:hello@binarcommunity.org" className="hover:text-blue-600 transition-colors text-xs lg:text-sm">hello@binarcommunity.org</a>
+                        <div className="min-w-[240px]">
+                            <h4 className="text-[18px] font-extrabold text-slate-900 mb-6">Kontak Kami</h4>
+                            <ul className="space-y-4">
+                                {/* Email */}
+                                <li>
+                                    <a href="mailto:hello@binarcommunity.org" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
+                                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1c5ce5] flex items-center justify-center text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                            </svg>
+                                        </span>
+                                        hello@binarcommunity.org
+                                    </a>
                                 </li>
-                                <li className="flex items-center gap-3">
-                                    <div className="bg-blue-600 p-1.5 rounded-full text-white shrink-0">
-                                        <Phone size={14} strokeWidth={2.5} />
-                                    </div>
-                                    <a href="tel:081234567890" className="hover:text-blue-600 transition-colors text-xs lg:text-sm">0812-3456-7890</a>
+                                {/* Phone */}
+                                <li>
+                                    <a href="tel:081234567890" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
+                                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1c5ce5] flex items-center justify-center text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                            </svg>
+                                        </span>
+                                        0812-3456-7890
+                                    </a>
                                 </li>
-                                <li className="flex items-center gap-3">
-                                    <div className="bg-blue-600 p-1.5 rounded-full text-white shrink-0">
-                                        <InstagramIcon size={14} strokeWidth={2.5} />
-                                    </div>
-                                    <a href="#" className="hover:text-blue-600 transition-colors text-xs lg:text-sm">@binar.community</a>
+                                {/* Instagram */}
+                                <li>
+                                    <a href="https://instagram.com/binar.community" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
+                                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1c5ce5] flex items-center justify-center text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                                            </svg>
+                                        </span>
+                                        @binar.community
+                                    </a>
                                 </li>
                             </ul>
                         </div>
 
                     </div>
                 </div>
+
             </div>
 
-            {/* Copyright Strip */}
-            <div className="w-full bg-[#3668C6] py-3 text-center">
-                <p className="text-white/90 text-sm font-medium">
-                    &copy; 2026 Mochammad isthimata. All rights reserved.
-                </p>
+            {/* Bottom Bar - Full Width Blue Background */}
+            <div className="bg-[#1c5ce5] py-5 mt-6">
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center text-center">
+                    <p className="text-[14px] font-medium text-white tracking-wide">
+                        © 2026 Mochammad isthmata. All rights reserved.
+                    </p>
+                </div>
             </div>
         </footer>
     );
