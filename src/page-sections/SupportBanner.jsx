@@ -15,7 +15,7 @@ const SupportBanner = () => {
 
         {/* Tombol Donasi */}
         <button 
-            onClick={() => window.dispatchEvent(new Event('show-maintenance'))}
+            onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Donasi Sekarang' } }))}
             className="bg-[#FCD368] hover:bg-[#f0c558] transition-colors text-slate-800 font-bold py-3 lg:py-4 px-6 lg:px-8 rounded-full flex items-center gap-2 whitespace-nowrap shadow-sm"
         >
             Donasi Sekarang <Heart size={20} className="fill-slate-800" />

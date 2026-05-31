@@ -70,7 +70,7 @@ const Programs = () => {
     };
 
     return (
-        <section id="program" className="w-full py-16 lg:py-24 bg-white overflow-hidden">
+        <section id="program" className="w-full py-16 lg:py-24 bg-white">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -80,29 +80,30 @@ const Programs = () => {
             >
 
                 {/* Header Section */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-[2.5rem] font-extrabold text-slate-800 mb-4 tracking-tight">
-                        Program Kami
-                    </h2>
-                    <p className="text-slate-500 text-lg max-w-2xl mx-auto">
-                        Berbagai program untuk mendukung kesehatan mental anak dan remaja
-                    </p>
+                <div className="flex flex-col items-center justify-center gap-6 mb-12 text-center">
+                    <div>
+                        <h2 className="text-3xl md:text-[2.5rem] font-extrabold text-slate-800 mb-2 md:mb-4 tracking-tight">
+                            Program Kami
+                        </h2>
+                        <p className="text-slate-500 text-base md:text-lg max-w-xl mx-auto">
+                            Berbagai program untuk mendukung kesehatan mental anak dan remaja
+                        </p>
+                    </div>
                     <button 
-                        onClick={() => window.dispatchEvent(new Event('show-maintenance'))}
-                        className="group flex items-center justify-between w-full mt-6 px-6 py-4 bg-white hover:bg-blue-50 border border-slate-100 rounded-xl transition-all duration-300"
+                        onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Lihat Semua Program' } }))}
+                        className="group flex items-center justify-center mt-2"
                     >
-                        <span className="font-semibold text-blue-600">Lihat Selengkapnya</span>
-                        <ArrowRight className="w-5 h-5 text-blue-600 transform group-hover:translate-x-2 transition-transform duration-300" />
+                        <span className="font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-300 whitespace-nowrap">Lihat Selengkapnya</span>
                     </button>
                 </div>
 
                 {/* Slider Area */}
-                <div className="relative group">
+                <div className="relative group -mx-4 sm:-mx-6 lg:mx-0">
 
                     {/* Tombol Kiri (Muncul saat hover di layar besar) */}
                     <button
                         onClick={scrollLeft}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 bg-blue-600 text-white rounded-full p-2.5 shadow-lg hover:bg-blue-700 hover:scale-110 transition-all focus:outline-none hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 disabled:opacity-0"
+                        className="absolute left-4 sm:left-6 lg:left-2 top-1/2 -translate-y-1/2 z-10 bg-blue-600 text-white rounded-full p-2.5 shadow-lg hover:bg-blue-700 hover:scale-110 transition-all focus:outline-none hidden lg:flex items-center justify-center opacity-0 group-hover:opacity-100 disabled:opacity-0"
                         aria-label="Geser Kiri"
                     >
                         <ChevronLeft size={24} />
@@ -111,10 +112,10 @@ const Programs = () => {
                     {/* Kontainer Scroll Horizontal */}
                     <div
                         ref={scrollContainerRef}
-                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-4 px-2"
+                        className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-4 px-4 sm:px-6 lg:px-2"
                     >
                         {programsData.map((program) => (
-                            <div key={program.id} className="snap-start shrink-0 flex">
+                            <div key={program.id} className="snap-center lg:snap-start shrink-0 flex">
                                 <ProgramCard
                                     title={program.title}
                                     description={program.description}
@@ -128,7 +129,7 @@ const Programs = () => {
                     {/* Tombol Kanan (Muncul saat hover di layar besar) */}
                     <button
                         onClick={scrollRight}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 bg-blue-600 text-white rounded-full p-2.5 shadow-lg hover:bg-blue-700 hover:scale-110 transition-all focus:outline-none hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100"
+                        className="absolute right-4 sm:right-6 lg:right-2 top-1/2 -translate-y-1/2 z-10 bg-blue-600 text-white rounded-full p-2.5 shadow-lg hover:bg-blue-700 hover:scale-110 transition-all focus:outline-none hidden lg:flex items-center justify-center opacity-0 group-hover:opacity-100"
                         aria-label="Geser Kanan"
                     >
                         <ChevronRight size={24} />

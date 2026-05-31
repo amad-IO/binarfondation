@@ -37,10 +37,10 @@ const ImpactBanner = () => {
                 {/* Kontainer Flex utama dibatasi 85% lebar di desktop agar tidak nabrak gambar */}
                 <div className="flex flex-col xl:flex-row items-center justify-center xl:justify-start py-8 lg:py-10 gap-8 xl:gap-16 w-full xl:w-[85%]">
 
-                    <div className="text-center xl:text-left z-10 shrink-0">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3 leading-snug tracking-normal">
-                            <span className="xl:whitespace-nowrap">Bersama, kita bisa jadi cahaya</span> <br className="hidden sm:block" />
-                            untuk lebih banyak jiwa
+                    <div className="text-center xl:text-left z-10 shrink-0 px-2">
+                        <h2 className="text-lg min-[375px]:text-[20px] sm:text-2xl lg:text-3xl font-bold text-white mb-3 leading-snug tracking-tight xl:tracking-normal">
+                            <span className="block whitespace-nowrap">Bersama, kita bisa jadi cahaya</span>
+                            <span className="block">untuk lebih banyak jiwa</span>
                         </h2>
                         <p className="text-blue-100 text-sm lg:text-base font-medium">
                             Yuk jadi bagian dari gerakan kebaikan ini!
@@ -48,14 +48,14 @@ const ImpactBanner = () => {
                     </div>
 
                     {/* Kolom Tengah: Statistik */}
-                    <div className="flex flex-col sm:flex-row flex-wrap xl:flex-nowrap justify-center items-center gap-4 sm:gap-5 lg:gap-6 z-10">
+                    <div className="flex flex-col sm:flex-row flex-wrap xl:flex-nowrap justify-center items-center gap-6 sm:gap-5 lg:gap-6 z-10 mt-4 sm:mt-0">
 
                         {/* Stat 1 */}
-                        <div className="flex items-center gap-2 shrink-0">
-                            <Calendar size={36} strokeWidth={1} color="white" className="w-8 h-8 lg:w-10 lg:h-10" />
+                        <div className="flex items-center gap-4 sm:gap-2 shrink-0">
+                            <Calendar strokeWidth={1.5} color="white" className="w-12 h-12 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                             <div className="text-left">
-                                <div className="text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={50} /></div>
-                                <div className="text-[10px] font-medium text-blue-100">Kegiatan</div>
+                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={50} /></div>
+                                <div className="text-sm sm:text-[10px] font-medium text-blue-100">Kegiatan</div>
                             </div>
                         </div>
 
@@ -63,11 +63,11 @@ const ImpactBanner = () => {
                         <div className="hidden sm:block w-px h-8 lg:h-10 bg-white/40"></div>
 
                         {/* Stat 2 */}
-                        <div className="flex items-center gap-2 shrink-0">
-                            <Heart size={36} strokeWidth={1} color="white" className="w-8 h-8 lg:w-10 lg:h-10" />
+                        <div className="flex items-center gap-4 sm:gap-2 shrink-0">
+                            <Heart strokeWidth={1.5} color="white" className="w-12 h-12 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                             <div className="text-left">
-                                <div className="text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={50000} duration={2500} /></div>
-                                <div className="text-[10px] font-medium text-blue-100">Penerima Manfaat</div>
+                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={50000} duration={2500} /></div>
+                                <div className="text-sm sm:text-[10px] font-medium text-blue-100">Penerima Manfaat</div>
                             </div>
                         </div>
 
@@ -75,11 +75,11 @@ const ImpactBanner = () => {
                         <div className="hidden sm:block w-px h-8 lg:h-10 bg-white/40"></div>
 
                         {/* Stat 3 */}
-                        <div className="flex items-center gap-2 shrink-0">
-                            <Users size={36} strokeWidth={1} color="white" className="w-8 h-8 lg:w-10 lg:h-10" />
+                        <div className="flex items-center gap-4 sm:gap-2 shrink-0">
+                            <Users strokeWidth={1.5} color="white" className="w-12 h-12 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                             <div className="text-left">
-                                <div className="text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={300} /></div>
-                                <div className="text-[10px] font-medium text-blue-100">Relawan Aktif</div>
+                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={300} /></div>
+                                <div className="text-sm sm:text-[10px] font-medium text-blue-100">Relawan Aktif</div>
                             </div>
                         </div>
 

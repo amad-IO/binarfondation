@@ -27,7 +27,7 @@ const ProgramCard = ({ image, title, description, linkText = "Lihat Selengkapnya
         
         {/* Tombol Link */}
         <button 
-            onClick={() => window.dispatchEvent(new Event('show-maintenance'))}
+            onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: title } }))}
             className="flex items-center gap-2 mt-4 lg:mt-6 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group"
         >
             Lihat Selengkapnya

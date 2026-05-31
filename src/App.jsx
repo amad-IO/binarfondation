@@ -11,7 +11,7 @@ import MaintenanceNotification from './components/MaintenanceNotification';
 
 function App() {
     return (
-        <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+        <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
             <Navbar />
 
             {/* Bagian Hero / Beranda utama */}
@@ -19,13 +19,12 @@ function App() {
 
             {/* Main Content Area */}
             <main className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-8 mt-12 lg:mt-20">
-
                 {/* Bagian Tentang Kami */}
                 <About />
-
-                {/* Bagian Program */}
-                <Programs />
             </main>
+
+            {/* Bagian Program (Full Width) */}
+            <Programs />
 
             {/* Bagian Impact Banner (Full Width) */}
             <ImpactBanner />

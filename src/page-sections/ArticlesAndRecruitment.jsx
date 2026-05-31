@@ -18,9 +18,9 @@ const ArticlesAndRecruitment = () => {
                 >
                     <div className="flex justify-between items-center mb-6 lg:mb-8">
                         <h3 className="text-xl lg:text-2xl font-bold text-slate-800">Artikel Terbaru</h3>
-                        <a href="#" className="text-blue-600 text-sm font-semibold flex items-center hover:underline">
+                        <button onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Lihat Semua Artikel' } }))} className="text-blue-600 text-sm font-semibold flex items-center hover:underline">
                             Lihat Semua <ArrowRight size={16} className="ml-1" />
-                        </a>
+                        </button>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -71,22 +71,25 @@ const ArticlesAndRecruitment = () => {
                     id="relawan"
                     className="xl:col-span-1 h-full bg-[#F4F8FF] rounded-[2rem] p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden shadow-sm border border-blue-50/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1"
                 >
-                    <div className="relative z-10">
-                        <h3 className="text-xl lg:text-2xl font-bold text-slate-800 mb-4">Open Recruitment Relawan</h3>
-                        <p className="text-slate-600 text-sm leading-relaxed mb-8 xl:max-w-[85%]">
+                    <div className="relative z-10 flex flex-col items-center xl:items-start text-center xl:text-left h-full">
+                        <h3 className="text-xl lg:text-2xl font-bold text-slate-800 mb-3 xl:mb-4">Open Recruitment Relawan</h3>
+                        <p className="text-slate-600 text-sm leading-relaxed mb-6 xl:mb-8 xl:max-w-[85%]">
                             Yuk bergabung jadi relawan Binar dan berkontribusi untuk kesehatan mental anak dan remaja Indonesia.
                         </p>
-                        <Button variant="primary" className="flex items-center gap-2 text-sm px-6 py-3 w-max" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>
+                        
+                        {/* Illustration Asset - Middle on Mobile, Absolute Bottom-Right on XL */}
+                        <div className="flex-grow flex items-center justify-center w-full mb-8 xl:mb-0">
+                            <img
+                                src={registrationImage}
+                                alt="Ilustrasi Relawan"
+                                className="w-full max-w-[200px] xl:absolute xl:bottom-0 xl:right-0 xl:max-w-[280px] object-contain object-bottom z-0"
+                            />
+                        </div>
+
+                        <Button variant="primary" className="flex items-center gap-2 text-sm px-6 py-3 w-max relative z-10 xl:mt-auto" onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Daftar Sekarang' } }))}>
                             Daftar Sekarang <ArrowRight size={16} />
                         </Button>
                     </div>
-
-                    {/* Illustration Asset */}
-                    <img
-                        src={registrationImage}
-                        alt="Ilustrasi Relawan"
-                        className="absolute bottom-0 right-0 w-[80%] max-w-[220px] lg:max-w-[280px] object-contain object-bottom z-0"
-                    />
                 </motion.div>
 
             </div>

@@ -16,24 +16,24 @@ const Hero = () => {
     return (
         <section
             id="beranda"
-            className="relative w-full h-screen min-h-[650px] flex items-center pt-20 overflow-hidden bg-white"
+            className="relative w-full min-h-[100dvh] flex items-center pt-24 pb-12 lg:pt-20 lg:pb-0 overflow-hidden bg-white"
         >
             {/* Subtle Glow Background */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-20">
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-100/50 rounded-full blur-[100px]"></div>
                 <div className="absolute bottom-[-10%] right-[20%] w-[40%] h-[40%] bg-yellow-100/40 rounded-full blur-[80px]"></div>
             </div>
 
             {/* Container Layout */}
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-x-8 gap-y-6 pt-6 pb-0 lg:pt-24 lg:pb-0">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-x-8 gap-y-8 lg:gap-y-6 pt-6 lg:pt-24 relative z-10">
 
                 {/* TEXT AREA (Mobile: Atas, Desktop: Kiri Atas) */}
                 <motion.div
+                    style={{ x: xLeft, opacity }}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    style={{ x: xLeft, opacity }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-end lg:justify-center z-10 pt-4 lg:pt-0 pb-10 lg:pb-0"
+                    className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-end lg:justify-center pt-4 lg:pt-0"
                 >
                     <h1 className="text-[2.5rem] sm:text-5xl lg:text-[4rem] font-semibold text-slate-900/90 leading-[1.1] mb-6 tracking-tight">
                         Ruang Aman <br className="hidden sm:block" />
@@ -48,11 +48,11 @@ const Hero = () => {
 
                 {/* IMAGE AREA (Mobile: Tengah, Desktop: Kanan Full Row) */}
                 <motion.div
+                    style={{ x: xRight, opacity }}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    style={{ x: xRight, opacity }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="order-2 lg:col-start-2 lg:row-span-2 relative flex items-end justify-center w-full h-full min-h-[300px] lg:min-h-0 z-0"
+                    className="order-2 lg:col-start-2 lg:row-span-2 relative flex items-end justify-center w-full min-h-[300px] lg:min-h-0"
                 >
                     {/* Latar Belakang Gelombang Asli (SVG) */}
                     <img
@@ -87,22 +87,36 @@ const Hero = () => {
 
                 {/* BUTTONS AREA (Mobile: Bawah, Desktop: Kiri Bawah) */}
                 <motion.div
+                    style={{ x: xLeft, opacity }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    style={{ x: xLeft, opacity }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="order-3 lg:col-start-1 lg:row-start-2 flex flex-wrap items-start gap-3 sm:gap-4 z-10 mt-2 lg:mt-0"
+                    className="order-3 lg:col-start-1 lg:row-start-2 flex flex-wrap items-start gap-3 sm:gap-4 mt-2 lg:mt-0"
                 >
-                    <Button variant="primary" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>Gabung komunitas</Button>
-                    <Button variant="outline" onClick={() => window.dispatchEvent(new Event('show-maintenance'))}>Jadi Relawan</Button>
+                    <Button variant="primary" onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Gabung Komunitas' } }))}>Gabung komunitas</Button>
+                    <Button variant="outline" onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Jadi Relawan' } }))}>Jadi Relawan</Button>
                     {/* Tombol Donasi dengan Ikon */}
-                    <Button variant="accent" className="flex items-center gap-2">
+                    <Button variant="accent" className="flex items-center gap-2" onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Donasi Sekarang' } }))}>
                         <img src={loveDonate} alt="Love icon" className="w-4 h-4" />
                         Donasi Sekarang
                     </Button>
                 </motion.div>
 
             </div>
+
+            {/* Scroll Down Indicator */}
+            <motion.div
+                style={{ opacity }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center justify-center pointer-events-none z-20"
+            >
+                <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center p-1">
+                    <motion.div
+                        animate={{ y: [0, 16, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                        className="w-1.5 h-1.5 bg-blue-500 rounded-full"
+                    />
+                </div>
+            </motion.div>
         </section>
     );
 };
