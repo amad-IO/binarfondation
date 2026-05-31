@@ -138,7 +138,7 @@ const Footer = () => {
             <div className="bg-[#1c5ce5] py-5 mt-6">
                 <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center text-center">
                     <p className="text-[14px] font-medium text-white tracking-wide">
-                        © 2026 Mochammad isthmata. All rights reserved.
+                        © 2026 Rafif X Isthmata. All rights reserved.
                     </p>
                 </div>
             </div>
