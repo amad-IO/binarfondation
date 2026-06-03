@@ -45,8 +45,8 @@ const MaintenanceNotification = () => {
                 `}>
                     
                     {/* Background Watermark */}
-                    <div className="absolute inset-0 opacity-30 pointer-events-none flex items-center justify-center z-0 overflow-hidden">
-                        <img src={logo2Png} alt="watermark" className="w-full h-[140%] object-contain scale-[1.4] translate-x-6 md:scale-[1.2] md:translate-x-24" />
+                    <div className="absolute inset-0 opacity-20 pointer-events-none flex items-center justify-center z-0 overflow-hidden">
+                        <img src={logo2Png} alt="" className="w-[70%] md:w-[55%] object-contain md:translate-x-16" />
                     </div>
 
                     {/* macOS buttons (decorative & functional) */}
@@ -64,7 +64,7 @@ const MaintenanceNotification = () => {
 
                 {/* Left: Illustration */}
                 <div className="flex-shrink-0 flex justify-center mt-3 md:mt-0 z-10">
-                    <img src={questionsSvg} alt="Maintenance" className="w-16 md:w-[130px] object-contain drop-shadow-sm" />
+                    <img src={questionsSvg} alt="Maintenance" className="w-28 md:w-[130px] object-contain drop-shadow-sm" />
                 </div>
 
                 {/* Divider */}
