@@ -116,6 +116,7 @@ const Hero = () => {
                     <img
                         src={heroImage}
                         alt="Relawan Binar Community"
+                        fetchPriority="high"
                         className="relative z-10 w-full max-w-[300px] sm:max-w-[340px] lg:max-w-none lg:w-[82%] object-contain lg:translate-x-12 lg:translate-y-3 drop-shadow-sm"
                     />
 
