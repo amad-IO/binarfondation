@@ -1,5 +1,7 @@
 # Binar Foundation — Project Context
 
+> **Catatan untuk Agent**: Baca section [⚠️ Aturan Wajib untuk Agent](#️-aturan-wajib-untuk-agent) sebelum menambahkan aset apapun ke project ini.
+
 ## Identitas Proyek
 
 | Atribut | Detail |
@@ -44,7 +46,7 @@ Website ini bertujuan untuk:
 src/
 ├── App.jsx                        # Root component, susun semua section
 ├── main.jsx                       # Entry point React
-├── index.css                      # Global CSS: import Poppins, Tailwind, hide-scrollbar utility
+├── index.css                      # Global CSS: Tailwind + hide-scrollbar utility (Google Fonts di-load via <link> di index.html, BUKAN @import)
 │
 ├── components/                    # Komponen reusable
 │   ├── Button.jsx                 # Button UI (variant: primary, outline, accent, ghost)
@@ -178,6 +180,88 @@ window.dispatchEvent(new CustomEvent('show-maintenance', {
 - Semua fitur CTA masih maintenance — belum ada routing/halaman baru
 - Tidak ada state management eksternal (Redux/Zustand) — semua state lokal
 - Tidak ada backend / API call
+
+---
+
+## ⚠️ Aturan Wajib untuk Agent
+
+Section ini berisi aturan yang **HARUS diikuti** oleh agent setiap kali menambahkan atau memodifikasi aset di project ini.
+
+### 📦 Kompresi Aset — WAJIB Sebelum Digunakan
+
+**Setiap kali menambahkan file gambar baru ke `src/assets/`, agent WAJIB mengompres file tersebut terlebih dahulu sebelum menggunakannya di komponen manapun.**
+
+#### Untuk file SVG — gunakan `svgo`:
+```bash
+# Kompresi satu file SVG (overwrite langsung)
+npx svgo "src/assets/nama-file.svg"
+
+# Kompresi beberapa file SVG sekaligus
+npx svgo "src/assets/file1.svg" "src/assets/file2.svg"
+
+# Kompresi seluruh folder assets
+npx svgo --folder src/assets
+```
+
+#### Untuk file PNG/JPG — gunakan `sharp-cli` atau `imagemin`:
+```bash
+# Kompresi PNG
+npx sharp-cli -i "src/assets/gambar.png" -o "src/assets/gambar.png"
+
+# Atau gunakan squoosh-cli
+npx @squoosh/cli --oxipng auto "src/assets/gambar.png"
+```
+
+#### Ukuran aset yang direkomendasikan:
+| Tipe File | Ukuran Maks (setelah kompresi) |
+|-----------|--------------------------------|
+| SVG ilustrasi besar | < 80 KB |
+| SVG ikon kecil | < 5 KB |
+| PNG logo | < 30 KB |
+| PNG/JPG gambar konten | < 150 KB |
+
+> **Kenapa ini penting?** SVG yang tidak dioptimasi bisa berukuran 100KB+ padahal setelah kompresi bisa turun 50–70%. Ini langsung mempengaruhi First Contentful Paint (FCP) dan pengalaman pengguna di koneksi lambat.
+
+---
+
+## ⚡ Optimasi Performa (Riwayat Perubahan)
+
+Optimasi berikut telah diterapkan pada **3 Juni 2026** untuk mempercepat loading di Netlify:
+
+### 1. Google Fonts — Pindah ke `<link>` Preconnect
+- **Sebelum**: `@import url(...)` di `index.css` → render-blocking
+- **Sesudah**: `<link rel="preconnect">` + `<link rel="stylesheet">` di `index.html` → non-blocking
+- File yang diubah: `index.html`, `src/index.css`
+
+### 2. Lazy Loading Section dengan `React.lazy` + `Suspense`
+- **Sebelum**: Semua section di-import statik → seluruh bundle diload sekaligus
+- **Sesudah**: `Hero` saja yang statik, sisanya `lazy()` → halaman tampil lebih cepat
+- Skeleton loader (bola bouncing) ditampilkan saat section sedang diload
+- File yang diubah: `src/App.jsx`
+
+### 3. Build Optimization — Manual Chunk Splitting
+- **Sebelum**: Satu bundle besar berisi React + Framer Motion + semua komponen
+- **Sesudah**: Bundle dipecah menjadi chunk terpisah:
+  - `vendor-react` → React core (bisa di-cache browser jangka panjang)
+  - `vendor-framer` → Framer Motion (hanya diload saat dibutuhkan)
+  - `vendor-lucide` → Lucide Icons
+  - Tiap section menjadi chunk kecil sendiri (~1–8 KB)
+- File yang diubah: `vite.config.js`
+
+### 4. Kompresi SVG dengan `svgo`
+
+| File | Sebelum | Sesudah | Hemat |
+|------|---------|---------|-------|
+| `registration.svg` | 123 KB | 51 KB | **−59%** |
+| `user 3.svg` | 2.8 KB | 0.88 KB | **−69%** |
+| `globe.svg` | 2.6 KB | 0.85 KB | **−67%** |
+| `love-3.svg` | 0.9 KB | 0.4 KB | **−57%** |
+| `creative team.svg` | 126 KB | 105 KB | **−17%** |
+| `family.svg` | 85 KB | 71 KB | **−14%** |
+
+### 5. SEO & HTML
+- Tambah `lang="id"` pada tag `<html>`
+- Tambah `<meta name="description">` di `index.html`
 
 ---
 
