@@ -1,12 +1,29 @@
 import { useState, useEffect, useRef } from 'react';
 import impactImage from '../assets/creative team.svg';
 import { Calendar, Heart, Users } from 'lucide-react';
-import { useInView } from 'framer-motion';
+
+// useInView dengan native IntersectionObserver — tidak perlu framer-motion
+const useInView = (options = {}) => {
+    const ref = useRef(null);
+    const [inView, setInView] = useState(false);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setInView(true);
+                if (options.once) observer.disconnect();
+            }
+        }, { rootMargin: options.margin || '0px' });
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+    return [ref, inView];
+};
 
 const AnimatedNumber = ({ value, duration = 2000, prefix = "+ " }) => {
     const [count, setCount] = useState(0);
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, margin: "-50px" });
+    const [ref, inView] = useInView({ once: true, margin: "-50px" });
 
     useEffect(() => {
         if (!inView) return;

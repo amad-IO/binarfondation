@@ -3,16 +3,11 @@ import loveIcon from '../assets/love.svg';
 import loveDonate from '../assets/love 1.svg';
 import heroImage from '../assets/family.svg';
 import curveShape from '../assets/curve1.svg';
-import { motion, useScroll, useTransform } from 'framer-motion';
+
+// Tidak ada import framer-motion — animasi pakai CSS murni
+// Ini menghilangkan 141KB Framer Motion dari critical path loading
 
 const Hero = () => {
-    const { scrollY } = useScroll();
-    // Opacity will go from 1 to 0 as user scrolls from 0 to 400px
-    const opacity = useTransform(scrollY, [0, 400], [1, 0]);
-    // Split effect: left content moves left, right content moves right
-    const xLeft = useTransform(scrollY, [0, 400], [0, -200]);
-    const xRight = useTransform(scrollY, [0, 400], [0, 200]);
-
     return (
         <section
             id="beranda"
@@ -27,13 +22,10 @@ const Hero = () => {
             {/* Container Layout */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-x-8 gap-y-8 lg:gap-y-6 pt-6 lg:pt-24 relative z-10">
 
-                {/* TEXT AREA (Mobile: Atas, Desktop: Kiri Atas) */}
-                <motion.div
-                    style={{ x: xLeft, opacity }}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-end lg:justify-center pt-4 lg:pt-0"
+                {/* TEXT AREA — animasi masuk pakai CSS */}
+                <div
+                    style={{ animation: 'heroSlideLeft 0.8s ease-out forwards' }}
+                    className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-end lg:justify-center pt-4 lg:pt-0 opacity-0"
                 >
                     <h1 className="text-[2.5rem] sm:text-5xl lg:text-[4rem] font-semibold text-slate-900/90 leading-[1.1] mb-6 tracking-tight">
                         Ruang Aman <br className="hidden sm:block" />
@@ -44,17 +36,14 @@ const Hero = () => {
                     <p className="text-base sm:text-lg lg:text-xl text-slate-500 leading-relaxed max-w-lg font-medium">
                         Yayasan Binar Community hadir untuk mendampingi anak dan remaja Indonesia agar sehat mental, berani berbagi, dan tumbuh menjadi versi terbaik diri mereka.
                     </p>
-                </motion.div>
+                </div>
 
-                {/* IMAGE AREA (Mobile: Tengah, Desktop: Kanan Full Row) */}
-                <motion.div
-                    style={{ x: xRight, opacity }}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="order-2 lg:col-start-2 lg:row-span-2 relative flex items-end justify-center w-full min-h-[300px] lg:min-h-0"
+                {/* IMAGE AREA — animasi masuk pakai CSS */}
+                <div
+                    style={{ animation: 'heroSlideRight 0.8s ease-out 0.2s forwards' }}
+                    className="order-2 lg:col-start-2 lg:row-span-2 relative flex items-end justify-center w-full min-h-[300px] lg:min-h-0 opacity-0"
                 >
-                    {/* Latar Belakang Gelombang Asli (SVG) */}
+                    {/* Latar Belakang Gelombang */}
                     <img
                         src={curveShape}
                         alt="Background Curve"
@@ -68,11 +57,9 @@ const Hero = () => {
                     />
 
                     {/* Floating Bubble #Berbinar Untuk Bersinar */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1, duration: 0.5, type: "spring", stiffness: 200 }}
-                        className="absolute top-2 right-0 sm:top-8 sm:right-2 lg:top-0 lg:right-[4.5rem] z-20"
+                    <div
+                        style={{ animation: 'heroBubble 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1s forwards' }}
+                        className="absolute top-2 right-0 sm:top-8 sm:right-2 lg:top-0 lg:right-[4.5rem] z-20 opacity-0"
                     >
                         <div className="relative group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:scale-105 rotate-3 hover:rotate-6">
                             <div className="bg-[#FFF4D2] px-4 py-2 lg:px-5 lg:py-3 rounded-[1.25rem] shadow-lg shadow-yellow-900/10 border border-yellow-200/50">
@@ -82,41 +69,53 @@ const Hero = () => {
                             </div>
                             <div className="absolute -bottom-1.5 left-6 w-4 h-4 bg-[#FFF4D2] rotate-45 border-r border-b border-yellow-200/50 rounded-sm"></div>
                         </div>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
 
-                {/* BUTTONS AREA (Mobile: Bawah, Desktop: Kiri Bawah) */}
-                <motion.div
-                    style={{ x: xLeft, opacity }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="order-3 lg:col-start-1 lg:row-start-2 flex flex-wrap items-start gap-3 sm:gap-4 mt-2 lg:mt-0"
+                {/* BUTTONS AREA — animasi masuk pakai CSS */}
+                <div
+                    style={{ animation: 'heroSlideLeft 0.5s ease-out 0.4s forwards' }}
+                    className="order-3 lg:col-start-1 lg:row-start-2 flex flex-wrap items-start gap-3 sm:gap-4 mt-2 lg:mt-0 opacity-0"
                 >
                     <Button variant="primary" onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Gabung Komunitas' } }))}>Gabung komunitas</Button>
                     <Button variant="outline" onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Jadi Relawan' } }))}>Jadi Relawan</Button>
-                    {/* Tombol Donasi dengan Ikon */}
                     <Button variant="accent" className="flex items-center gap-2" onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Donasi Sekarang' } }))}>
                         <img src={loveDonate} alt="Love icon" className="w-4 h-4" />
                         Donasi Sekarang
                     </Button>
-                </motion.div>
+                </div>
 
             </div>
 
             {/* Scroll Down Indicator */}
-            <motion.div
-                style={{ opacity }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center justify-center pointer-events-none z-20"
-            >
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center justify-center pointer-events-none z-20">
                 <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center p-1">
-                    <motion.div
-                        animate={{ y: [0, 16, 0] }}
-                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                    <div
+                        style={{ animation: 'scrollDot 1.5s ease-in-out infinite' }}
                         className="w-1.5 h-1.5 bg-blue-500 rounded-full"
                     />
                 </div>
-            </motion.div>
+            </div>
+
+            {/* CSS Keyframes untuk animasi Hero — tidak butuh library apapun */}
+            <style>{`
+                @keyframes heroSlideLeft {
+                    from { opacity: 0; transform: translateX(-40px); }
+                    to   { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes heroSlideRight {
+                    from { opacity: 0; transform: translateX(40px); }
+                    to   { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes heroBubble {
+                    from { opacity: 0; transform: scale(0.8); }
+                    to   { opacity: 1; transform: scale(1); }
+                }
+                @keyframes scrollDot {
+                    0%, 100% { transform: translateY(0); }
+                    50%       { transform: translateY(16px); }
+                }
+            `}</style>
         </section>
     );
 };
