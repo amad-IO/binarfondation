@@ -13,7 +13,6 @@ const navLinks = [
     { name: 'Edukasi', to: '/edukasi' },
     { name: 'Relawan', to: '/relawan' },
     { name: 'Donasi', to: '/donasi' },
-    { name: 'Kontak', to: '/kontak' },
 ];
 
 const Navbar = () => {
@@ -80,8 +79,8 @@ const Navbar = () => {
                     {/* Kanan: Button + Hamburger */}
                     <div className="flex items-center gap-3">
                         <div className="hidden sm:flex">
-                            <Link to="/relawan" className="inline-flex items-center justify-center px-5 py-2 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5 focus:ring-blue-500 shadow-md hover:shadow-lg text-sm">
-                                Gabung Komunitas
+                            <Link to="/kontak" className="inline-flex whitespace-nowrap items-center justify-center px-5 py-2 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5 focus:ring-blue-500 shadow-md hover:shadow-lg text-sm">
+                                Contact Us
                             </Link>
                         </div>
 
@@ -127,8 +126,8 @@ const Navbar = () => {
                             </NavLink>
                         ))}
                         <div className="mt-2 pt-3 px-2 border-t border-gray-100 sm:hidden">
-                            <Link to="/relawan" className="inline-flex w-full items-center justify-center px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm text-sm">
-                                Gabung
+                            <Link to="/kontak" className="inline-flex w-full whitespace-nowrap items-center justify-center px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm text-sm">
+                                Contact Us
                             </Link>
                         </div>
                     </div>

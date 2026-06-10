@@ -72,59 +72,90 @@ const Hero = () => {
     return (
         <section
             id="beranda"
-            className="relative w-full min-h-[100dvh] flex items-center pt-20 pb-6 lg:pt-20 lg:pb-0 overflow-hidden bg-white"
+            className="relative w-full pt-28 pb-12 lg:pt-24 lg:pb-12 overflow-hidden bg-white"
         >
             {/* Subtle Glow Background */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-100/50 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-[-10%] right-[20%] w-[40%] h-[40%] bg-yellow-100/40 rounded-full blur-[80px]"></div>
+                <div className="absolute top-[-5%] left-[-5%] w-[50%] h-[50%] bg-blue-100/50 rounded-full blur-[100px]"></div>
+                <div className="absolute top-[45%] right-[15%] w-[40%] h-[40%] bg-yellow-100/40 rounded-full blur-[80px]"></div>
+                {/* Fade out mask at the bottom to prevent sharp cut-off line */}
+                <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white to-transparent"></div>
             </div>
 
-
-
             {/* Container Layout */}
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-x-8 gap-y-0 lg:gap-y-6 pt-4 lg:pt-24 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2 lg:items-center gap-x-8 lg:gap-x-10 gap-y-8 relative z-10">
 
-                {/* TEXT AREA — dimulai opacity:0, dianimasikan via JS */}
-                <div
-                    ref={leftRef}
-                    style={{ opacity: 0 }}
-                    className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-end lg:justify-center pt-4 lg:pt-0 relative z-10"
-                >
-                    <h1 className="text-[2.5rem] sm:text-5xl lg:text-[4rem] font-semibold text-slate-900/90 leading-[1.1] mb-6 tracking-tight">
-                        Ruang Aman <br className="hidden sm:block" />
-                        untuk Tumbuh & <br className="hidden sm:block" />
-                        Pulih Bersama
-                        <img src={loveIcon} alt="Love" className="inline-block w-8 sm:w-10 lg:w-12 ml-2 sm:ml-4 align-baseline -translate-y-1 sm:-translate-y-2" />
-                    </h1>
-                    <p className="text-base sm:text-lg lg:text-xl text-slate-500 leading-relaxed max-w-lg font-medium">
-                        Binar Foundation hadir untuk mendampingi anak dan remaja Indonesia agar sehat mental, berani berbagi, dan tumbuh menjadi versi terbaik diri mereka.
-                    </p>
+                {/* LEFT COLUMN (Text + Buttons) */}
+                <div className="order-2 lg:order-1 flex flex-col justify-center">
+                    {/* TEXT AREA */}
+                    <div
+                        ref={leftRef}
+                        style={{ opacity: 0 }}
+                    >
+                        <h1 className="text-[2.25rem] sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-semibold text-slate-900/90 leading-[1.1] mb-4 tracking-tight">
+                            Ruang Aman untuk Tumbuh & <br className="hidden sm:block" /> Pulih Bersama
+                            <img src={loveIcon} alt="Love" className="inline-block w-6 sm:w-8 lg:w-10 ml-2 align-baseline -translate-y-1" />
+                        </h1>
+                        <p className="text-base lg:text-base text-slate-500 leading-relaxed max-w-xl">
+                            Binar Foundation hadir untuk mendampingi anak dan remaja Indonesia agar sehat mental, berani berbagi, dan tumbuh menjadi versi terbaik diri mereka.
+                        </p>
+                    </div>
+
+                    {/* BUTTONS AREA */}
+                    <div
+                        ref={buttonsRef}
+                        style={{ opacity: 0 }}
+                        className="flex flex-col gap-3 mt-6 lg:mt-8 relative z-10 sm:flex-row sm:items-start"
+                    >
+                        <Button
+                            variant="primary"
+                            className="w-full sm:w-auto"
+                            onClick={() => navigate('/relawan')}
+                        >
+                            Gabung komunitas
+                        </Button>
+                        <div className="flex gap-3">
+                            <Button
+                                variant="outline"
+                                className="flex-1 sm:flex-none text-sm whitespace-nowrap"
+                                onClick={() => navigate('/relawan')}
+                            >
+                                Jadi Relawan
+                            </Button>
+                            <Button
+                                variant="accent"
+                                className="flex-1 sm:flex-none text-sm whitespace-nowrap flex items-center justify-center gap-1.5"
+                                onClick={() => navigate('/donasi')}
+                            >
+                                <img src={loveDonate} alt="" className="w-3.5 h-3.5" />
+                                Donasi Sekarang
+                            </Button>
+                        </div>
+                    </div>
                 </div>
 
-                {/* IMAGE AREA — dimulai opacity:0, dianimasikan via JS */}
+                {/* RIGHT COLUMN (Image) */}
                 <div
                     ref={rightRef}
                     style={{ opacity: 0 }}
-                    className="order-2 lg:col-start-2 lg:row-span-2 relative flex items-end justify-center w-full sm:min-h-[160px] lg:min-h-0"
+                    className="order-1 lg:order-2 w-full max-w-md lg:max-w-none lg:w-[90%] mx-auto lg:ml-auto relative z-10"
                 >
-                    {/* Curve background — posisi asli di dalam image div */}
                     <img
                         src={curveShape}
                         alt=""
                         aria-hidden="true"
-                        className="absolute -z-10 w-[200%] sm:w-[170%] lg:w-[175%] max-w-none bottom-0 right-[-15%] lg:right-[-35%] object-contain pointer-events-none"
+                        className="absolute -z-10 w-[200%] sm:w-[150%] max-w-none -bottom-10 -right-20 object-cover pointer-events-none opacity-50"
                     />
                     <img
                         src={heroImage}
                         alt="Relawan Binar Foundation"
                         fetchPriority="high"
-                        className="relative z-10 w-full max-w-[300px] sm:max-w-[340px] lg:max-w-none lg:w-[82%] object-contain lg:translate-x-12 lg:translate-y-3 drop-shadow-sm"
+                        className="relative z-10 w-full max-h-[50vh] lg:max-h-[60vh] object-contain drop-shadow-sm mx-auto"
                     />
 
                     {/* Floating Bubble */}
                     <div
-                        className="absolute top-2 right-0 sm:top-8 sm:right-2 lg:top-0 lg:right-[4.5rem] z-20"
+                        className="absolute top-0 right-0 sm:top-8 sm:right-0 z-20"
                         style={{ animation: 'heroBubble 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1s both' }}
                     >
                         <div className="relative group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:scale-105 rotate-3 hover:rotate-6">
@@ -137,43 +168,6 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* BUTTONS AREA — dimulai opacity:0, dianimasikan via JS */}
-                <div
-                    ref={buttonsRef}
-                    style={{ opacity: 0 }}
-                    className="order-3 lg:col-start-1 lg:row-start-2 flex flex-col gap-3 mt-2 lg:mt-0 relative z-10 lg:flex-row lg:flex-wrap lg:items-start"
-                >
-                    {/* Baris 1: Gabung komunitas — full width di mobile */}
-                    <Button
-                        variant="primary"
-                        className="w-full lg:w-auto"
-                        onClick={() => navigate('/relawan')}
-                    >
-                        Gabung komunitas
-                    </Button>
-
-                    {/* Baris 2: Jadi Relawan + Donasi berdampingan di mobile */}
-                    <div className="flex gap-3 lg:contents">
-                        <Button
-                            variant="outline"
-                            className="flex-1 lg:flex-none text-sm whitespace-nowrap"
-                            onClick={() => navigate('/relawan')}
-                        >
-                            Jadi Relawan
-                        </Button>
-                        <Button
-                            variant="accent"
-                            className="flex-1 lg:flex-none text-sm whitespace-nowrap flex items-center justify-center gap-1.5"
-                            onClick={() => navigate('/donasi')}
-                        >
-                            <img src={loveDonate} alt="" className="w-3.5 h-3.5" />
-                            Donasi Sekarang
-                        </Button>
-                    </div>
-                </div>
-
-
             </div>
 
             <style>{`
