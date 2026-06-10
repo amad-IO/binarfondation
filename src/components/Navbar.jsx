@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import Button from './Button';
 import logoImage from '../assets/logo.PNG';
 
@@ -6,49 +7,32 @@ import logoImage from '../assets/logo.PNG';
 // Ini menghapus vendor-framer (43KB gzip) dari critical path sepenuhnya
 
 const navLinks = [
-    { name: 'Beranda', href: '#beranda' },
-    { name: 'Tentang Kami', href: '#tentang-kami' },
-    { name: 'Program', href: '#program' },
-    { name: 'Edukasi', href: '#edukasi' },
-    { name: 'Relawan', href: '#relawan' },
-    { name: 'Donasi', href: '#donasi' },
-    { name: 'Kontak', href: '#kontak' },
+    { name: 'Beranda', to: '/' },
+    { name: 'Tentang Kami', to: '/tentang-kami' },
+    { name: 'Program', to: '/program' },
+    { name: 'Edukasi', to: '/edukasi' },
+    { name: 'Relawan', to: '/relawan' },
+    { name: 'Donasi', to: '/donasi' },
+    { name: 'Kontak', to: '/kontak' },
 ];
 
 const Navbar = () => {
-    const [activeSection, setActiveSection] = useState('beranda');
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
-
-            const sections = navLinks.map(link => link.href.substring(1));
-            let current = '';
-            for (const section of sections) {
-                const element = document.getElementById(section);
-                if (element && window.scrollY >= (element.offsetTop - 150)) {
-                    current = section;
-                }
-            }
-            if (current) setActiveSection(current);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (e, href) => {
-        e.preventDefault();
-        const targetId = href.replace('#', '');
-        const element = document.getElementById(targetId);
-        if (element) {
-            window.scrollTo({ top: element.offsetTop - 100, behavior: 'smooth' });
-            setActiveSection(targetId);
-            setIsMobileMenuOpen(false);
-        }
-    };
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [location.pathname]);
 
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-none ${isScrolled ? 'pt-4 pb-2' : 'py-4 lg:py-5'}`}>
@@ -61,35 +45,34 @@ const Navbar = () => {
 
                     {/* Logo */}
                     <div className="flex items-center gap-2">
-                        <div className="flex items-center cursor-pointer hover:opacity-90 transition-opacity" onClick={(e) => scrollToSection(e, '#beranda')}>
+                        <Link to="/" className="flex items-center cursor-pointer hover:opacity-90 transition-opacity">
                             <img src={logoImage} alt="Logo Binar Community" className="h-10 sm:h-12 object-contain" />
-                        </div>
+                        </Link>
                         <div className="h-8 sm:h-10 w-px bg-gray-200 block"></div>
                         <div className="flex flex-col">
-                            <span className="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider leading-none">Yayasan</span>
-                            <span className="text-[12px] sm:text-sm font-extrabold text-blue-700 leading-tight">Binar Community</span>
+                            <span className="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider leading-none">Binar</span>
+                            <span className="text-[12px] sm:text-sm font-extrabold text-blue-700 leading-tight">Foundation</span>
                         </div>
                     </div>
 
                     {/* Desktop Nav */}
                     <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
                         {navLinks.map((link) => {
-                            const isActive = activeSection === link.href.substring(1);
+                            const isActive = location.pathname === link.to;
                             return (
-                                <a
+                                <NavLink
                                     key={link.name}
-                                    href={link.href}
-                                    onClick={(e) => scrollToSection(e, link.href)}
+                                    to={link.to}
+                                    end={link.to === '/'}
                                     className={`px-3 py-2 text-sm font-medium transition-colors duration-200 relative ${
                                         isActive ? 'text-blue-600 font-semibold' : 'text-slate-500 hover:text-blue-600'
                                     }`}
                                 >
                                     {link.name}
-                                    {/* Indikator aktif — CSS transition, tidak perlu framer-motion */}
                                     <span className={`absolute bottom-0 left-3 right-3 h-[3px] bg-blue-600 rounded-t-md transition-all duration-300 ${
                                         isActive ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
                                     }`} />
-                                </a>
+                                </NavLink>
                             );
                         })}
                     </nav>
@@ -97,13 +80,9 @@ const Navbar = () => {
                     {/* Kanan: Button + Hamburger */}
                     <div className="flex items-center gap-3">
                         <div className="hidden sm:flex">
-                            <Button
-                                variant="primary"
-                                className="text-sm px-5 py-2"
-                                onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Gabung Komunitas' } }))}
-                            >
+                            <Link to="/relawan" className="inline-flex items-center justify-center px-5 py-2 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5 focus:ring-blue-500 shadow-md hover:shadow-lg text-sm">
                                 Gabung Komunitas
-                            </Button>
+                            </Link>
                         </div>
 
                         {/* Hamburger */}
@@ -134,27 +113,23 @@ const Navbar = () => {
                         isMobileMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'
                     }`}>
                         {navLinks.map((link) => (
-                            <a
+                            <NavLink
                                 key={link.name}
-                                href={link.href}
-                                onClick={(e) => scrollToSection(e, link.href)}
+                                to={link.to}
+                                end={link.to === '/'}
                                 className={`px-4 py-2.5 text-[15px] font-medium transition-colors duration-200 block rounded-xl ${
-                                    activeSection === link.href.substring(1)
+                                    location.pathname === link.to
                                         ? 'text-blue-600 bg-blue-50/50'
                                         : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'
                                 }`}
                             >
                                 {link.name}
-                            </a>
+                            </NavLink>
                         ))}
                         <div className="mt-2 pt-3 px-2 border-t border-gray-100 sm:hidden">
-                            <Button
-                                variant="primary"
-                                className="w-full text-sm py-2.5 shadow-sm"
-                                onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Gabung Komunitas' } }))}
-                            >
+                            <Link to="/relawan" className="inline-flex w-full items-center justify-center px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm text-sm">
                                 Gabung
-                            </Button>
+                            </Link>
                         </div>
                     </div>
 

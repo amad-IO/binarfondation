@@ -71,7 +71,7 @@ const ImpactBanner = () => {
                         <div className="flex items-center gap-4 sm:gap-2 shrink-0">
                             <Calendar strokeWidth={1.5} color="white" className="w-12 h-12 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                             <div className="text-left">
-                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={50} /></div>
+                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={20} /></div>
                                 <div className="text-sm sm:text-[10px] font-medium text-blue-100">Kegiatan</div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ const ImpactBanner = () => {
                         <div className="flex items-center gap-4 sm:gap-2 shrink-0">
                             <Heart strokeWidth={1.5} color="white" className="w-12 h-12 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                             <div className="text-left">
-                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={50000} duration={2500} /></div>
+                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={200} duration={2500} /></div>
                                 <div className="text-sm sm:text-[10px] font-medium text-blue-100">Penerima Manfaat</div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@ const ImpactBanner = () => {
                         <div className="flex items-center gap-4 sm:gap-2 shrink-0">
                             <Users strokeWidth={1.5} color="white" className="w-12 h-12 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
                             <div className="text-left">
-                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={300} /></div>
+                                <div className="text-3xl sm:text-lg lg:text-xl font-bold text-white"><AnimatedNumber value={50} /></div>
                                 <div className="text-sm sm:text-[10px] font-medium text-blue-100">Relawan Aktif</div>
                             </div>
                         </div>

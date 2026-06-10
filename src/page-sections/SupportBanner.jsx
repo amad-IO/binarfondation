@@ -7,7 +7,7 @@ const SupportBanner = () => {
         
         {/* Teks */}
         <div className="text-center md:text-left">
-          <h3 className="text-xl lg:text-2xl font-bold text-slate-800 mb-2">Dukung Yayasan Binar Community</h3>
+          <h3 className="text-xl lg:text-2xl font-bold text-slate-800 mb-2">Dukung Binar Foundation</h3>
           <p className="text-slate-700 text-sm lg:text-base">
             Setiap dukunganmu berarti untuk kesehatan mental anak dan remaja Indonesia.
           </p>

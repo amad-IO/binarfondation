@@ -1,22 +1,23 @@
+import { Link } from 'react-router-dom';
 import logo2 from '../assets/logo 2.PNG';
 
 const menuLinks = [
-    { name: 'Beranda', href: '#beranda' },
-    { name: 'Tentang Kami', href: '#tentang-kami' },
-    { name: 'Program Kami', href: '#program' },
-    { name: 'Edukasi', href: '#edukasi' },
+    { name: 'Beranda', to: '/' },
+    { name: 'Tentang Kami', to: '/tentang-kami' },
+    { name: 'Program Kami', to: '/program' },
+    { name: 'Edukasi', to: '/edukasi' },
 ];
 
 const bergabungLinks = [
-    { name: 'Relawan', href: '#relawan' },
-    { name: 'Gabung Komunitas', href: '#gabung' },
-    { name: 'Kerja Sama', href: '#kerja-sama' },
+    { name: 'Relawan', to: '/relawan' },
+    { name: 'Gabung Komunitas', to: '/relawan' },
+    { name: 'Kerja Sama', to: '/kontak' },
 ];
 
 const dukungLinks = [
-    { name: 'Donasi', href: '#donasi' },
-    { name: 'Sponsorship', href: '#sponsorship' },
-    { name: 'Media Partner', href: '#media-partner' },
+    { name: 'Donasi', to: '/donasi' },
+    { name: 'Sponsorship', to: '/donasi' },
+    { name: 'Media Partner', to: '/kontak' },
 ];
 
 const Footer = () => {
@@ -37,8 +38,7 @@ const Footer = () => {
                             />
                         </div>
                         <p className="-mt-10 text-[14px] font-medium text-slate-500 leading-relaxed pr-2">
-                            Yayasan Binar Community adalah organisasi nirlaba yang bergerak di
-                            bidang kesehatan mental dan pendidikan anak serta remaja di Indonesia.
+                            BINAR FOUNDATION adalah yayasan yang berfokus pada kesehatan mental dan pendidikan untuk anak serta remaja di Indonesia.
                         </p>
                     </div>
 
@@ -52,10 +52,9 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 {menuLinks.map((link) => (
                                     <li key={link.name}>
-                                        {/* Font size dibesarkan dari 14px ke 16px */}
-                                        <a href={link.href} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
+                                        <Link to={link.to} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
                                             {link.name}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -67,9 +66,9 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 {bergabungLinks.map((link) => (
                                     <li key={link.name}>
-                                        <a href={link.href} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
+                                        <Link to={link.to} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
                                             {link.name}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -81,9 +80,9 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 {dukungLinks.map((link) => (
                                     <li key={link.name}>
-                                        <a href={link.href} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
+                                        <Link to={link.to} className="text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200">
                                             {link.name}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -95,24 +94,24 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 {/* Email */}
                                 <li>
-                                    <a href="mailto:hello@binarcommunity.org" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
+                                    <a href="mailto:binarfoundation1@gmail.com" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
                                         <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1c5ce5] flex items-center justify-center text-white">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                 <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                                             </svg>
                                         </span>
-                                        hello@binarcommunity.org
+                                        binarfoundation1@gmail.com
                                     </a>
                                 </li>
                                 {/* Phone */}
                                 <li>
-                                    <a href="tel:081234567890" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
+                                    <a href="tel:082384516469" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
                                         <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1c5ce5] flex items-center justify-center text-white">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                                             </svg>
                                         </span>
-                                        0812-3456-7890
+                                        0823 8451 6469
                                     </a>
                                 </li>
                                 {/* Instagram */}
@@ -123,7 +122,25 @@ const Footer = () => {
                                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                                             </svg>
                                         </span>
-                                        @binar.community
+                                        @binar.foundation
+                                    </a>
+                                </li>
+                                {/* TikTok */}
+                                <li>
+                                    <a href="https://www.tiktok.com/@binar.community" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
+                                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1c5ce5] flex items-center justify-center text-white">
+                                            <span className="text-xs font-bold">TT</span>
+                                        </span>
+                                        @binar.foundation
+                                    </a>
+                                </li>
+                                {/* YouTube */}
+                                <li>
+                                    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[16px] font-medium text-slate-500 hover:text-blue-600 transition-colors duration-200 group">
+                                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1c5ce5] flex items-center justify-center text-white">
+                                            <span className="text-[10px] font-bold">YT</span>
+                                        </span>
+                                        binar foundation
                                     </a>
                                 </li>
                             </ul>

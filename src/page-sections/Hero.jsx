@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import loveIcon from '../assets/love.svg';
 import loveDonate from '../assets/love 1.svg';
@@ -9,6 +10,7 @@ const Hero = () => {
     const leftRef    = useRef(null);
     const rightRef   = useRef(null);
     const buttonsRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // ── ENTRY ANIMATION ──────────────────────────────────────────────
@@ -96,7 +98,7 @@ const Hero = () => {
                         <img src={loveIcon} alt="Love" className="inline-block w-8 sm:w-10 lg:w-12 ml-2 sm:ml-4 align-baseline -translate-y-1 sm:-translate-y-2" />
                     </h1>
                     <p className="text-base sm:text-lg lg:text-xl text-slate-500 leading-relaxed max-w-lg font-medium">
-                        Yayasan Binar Community hadir untuk mendampingi anak dan remaja Indonesia agar sehat mental, berani berbagi, dan tumbuh menjadi versi terbaik diri mereka.
+                        Binar Foundation hadir untuk mendampingi anak dan remaja Indonesia agar sehat mental, berani berbagi, dan tumbuh menjadi versi terbaik diri mereka.
                     </p>
                 </div>
 
@@ -115,7 +117,7 @@ const Hero = () => {
                     />
                     <img
                         src={heroImage}
-                        alt="Relawan Binar Community"
+                        alt="Relawan Binar Foundation"
                         fetchPriority="high"
                         className="relative z-10 w-full max-w-[300px] sm:max-w-[340px] lg:max-w-none lg:w-[82%] object-contain lg:translate-x-12 lg:translate-y-3 drop-shadow-sm"
                     />
@@ -146,7 +148,7 @@ const Hero = () => {
                     <Button
                         variant="primary"
                         className="w-full lg:w-auto"
-                        onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Gabung Komunitas' } }))}
+                        onClick={() => navigate('/relawan')}
                     >
                         Gabung komunitas
                     </Button>
@@ -156,14 +158,14 @@ const Hero = () => {
                         <Button
                             variant="outline"
                             className="flex-1 lg:flex-none text-sm whitespace-nowrap"
-                            onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Jadi Relawan' } }))}
+                            onClick={() => navigate('/relawan')}
                         >
                             Jadi Relawan
                         </Button>
                         <Button
                             variant="accent"
                             className="flex-1 lg:flex-none text-sm whitespace-nowrap flex items-center justify-center gap-1.5"
-                            onClick={() => window.dispatchEvent(new CustomEvent('show-maintenance', { detail: { feature: 'Donasi Sekarang' } }))}
+                            onClick={() => navigate('/donasi')}
                         >
                             <img src={loveDonate} alt="" className="w-3.5 h-3.5" />
                             Donasi Sekarang
