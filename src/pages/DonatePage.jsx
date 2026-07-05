@@ -6,22 +6,22 @@ const BUDGET_DATA = [
     {
         category: 'Pengurus Pusat',
         reports: [
-            { year: 'Tahun 2025', total: 'Rp 24.500.000', detail: 'Alokasi operasional program utama, website development, pengadaan sistem peer-support, dan manajemen pengurus.' },
-            { year: 'Tahun 2026', total: 'Rp 31.200.000', detail: 'Peningkatan kapasitas server konseling online, ekspansi kurikulum edukasi, dan pendampingan intensif minat bakat.' }
+            { year: 'Tahun 2025', detail: 'Alokasi operasional program utama, website development, pengadaan sistem peer-support, dan manajemen pengurus.' },
+            { year: 'Tahun 2026', detail: 'Peningkatan kapasitas server konseling online, ekspansi kurikulum edukasi, dan pendampingan intensif minat bakat.' }
         ]
     },
     {
         category: 'Pengurus Chapter Jatim',
         reports: [
-            { year: 'Tahun 2025', total: 'Rp 14.800.000', detail: 'Pendanaan Rumah Belajar Kampung Pemulung & Dolly, serta pengadaan modul ajar karakter anak marginal.' },
-            { year: 'Tahun 2026', total: 'Rp 18.500.000', detail: 'Optimalisasi fasilitas Rumah Belajar KBM Petojo, perluasan jangkauan psikologi komunitas, dan aktivitas sosial CFD.' }
+            { year: 'Tahun 2025', detail: 'Pendanaan Rumah Belajar Kampung Pemulung & Dolly, serta pengadaan modul ajar karakter anak marginal.' },
+            { year: 'Tahun 2026', detail: 'Optimalisasi fasilitas Rumah Belajar KBM Petojo, perluasan jangkauan psikologi komunitas, dan aktivitas sosial CFD.' }
         ]
     },
     {
         category: 'Pengurus Chapter Riau',
         reports: [
-            { year: 'Tahun 2025', total: 'Rp 8.900.000', detail: 'Inisiasi Rumah Belajar Al-Muzakki, pengadaan alat tulis dasar, dan edukasi kesehatan mental skala sekolah.' },
-            { year: 'Tahun 2026', total: 'Rp 11.000.000', detail: 'Pengembangan kapasitas pengajar relawan lokal, peningkatan sarana belajar, dan kampanye sosial offline.' }
+            { year: 'Tahun 2025', detail: 'Inisiasi Rumah Belajar Al-Muzakki, pengadaan alat tulis dasar, dan edukasi kesehatan mental skala sekolah.' },
+            { year: 'Tahun 2026', detail: 'Pengembangan kapasitas pengajar relawan lokal, peningkatan sarana belajar, dan kampanye sosial offline.' }
         ]
     }
 ];
@@ -43,7 +43,7 @@ const DonatePage = () => {
 
             {/* Menggunakan background slate tipis untuk memberikan efek pop-out pada kartu putih */}
             <section className="w-full bg-slate-50/50 pb-16 lg:pb-24">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-10 pt-12">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-10 pt-12">
 
                     {/* HERO CARD (KARTU UTAMA DONASI) */}
                     <div className="rounded-2xl border border-blue-100 bg-white p-6 lg:p-8 flex flex-col sm:flex-row items-start gap-6 shadow-xs">
@@ -54,7 +54,7 @@ const DonatePage = () => {
                             <span className="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-2.5">
                                 Akuntabilitas Finansial
                             </span>
-                            <h3 className="text-lg lg:text-xl font-extrabold text-slate-900 mb-1.5">Binar Charity &amp; Donasi</h3>
+                            <h3 className="text-xl lg:text-2xl font-extrabold text-slate-900 mb-1.5">Binar Charity &amp; Donasi</h3>
                             <p className="text-xs lg:text-sm text-slate-500 leading-relaxed mb-5">
                                 Kami melakukan Open Donasi secara berkala. Seluruh dana yang masuk dipertanggungjawabkan sepenuhnya secara terbuka demi menjaga keberlanjutan operasional yayasan.
                             </p>
@@ -72,7 +72,7 @@ const DonatePage = () => {
                                 <PieChart size={18} className="stroke-[2.25]" />
                             </div>
                             <div>
-                                <h2 className="text-base lg:text-lg font-extrabold text-slate-900 tracking-tight">Laporan Penggunaan Anggaran</h2>
+                                <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">Laporan Penggunaan Anggaran</h2>
                                 <p className="text-xs text-slate-400 mt-0.5">Bentuk akuntabilitas finansial pengurus pusat dan daerah</p>
                             </div>
                         </div>
@@ -92,16 +92,11 @@ const DonatePage = () => {
                                             aria-expanded={isOpen}
                                         >
                                             <span className="text-sm font-bold text-slate-900">{item.category}</span>
-                                            <div className="flex items-center gap-3">
-                                                <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-500 hidden sm:block">
-                                                    {item.reports[0].total} · {item.reports[1].total}
-                                                </span>
-                                                <ChevronDown
-                                                    size={16}
-                                                    className={`text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : ''}`}
-                                                    strokeWidth={2.25}
-                                                />
-                                            </div>
+                                            <ChevronDown
+                                                size={16}
+                                                className={`text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : ''}`}
+                                                strokeWidth={2.25}
+                                            />
                                         </button>
 
                                         {/* ACCORDION BODY */}
@@ -117,9 +112,6 @@ const DonatePage = () => {
                                                                 <div className="flex justify-between items-center pb-2 border-b border-slate-100">
                                                                     <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
                                                                         {report.year}
-                                                                    </span>
-                                                                    <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">
-                                                                        {report.total}
                                                                     </span>
                                                                 </div>
                                                                 <p className="text-xs leading-relaxed text-slate-500">{report.detail}</p>

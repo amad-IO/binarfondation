@@ -14,35 +14,35 @@ const DIVISIONS = [
         description: 'Membuat aturan, kebijakan, dan memastikan fasilitas untuk Bi-Family terpenuhi.', 
         icon: Building2, 
         color: 'bg-blue-50 text-blue-600',
-        image: '/images/divisi-bi-main.jpg' 
+        image: '/10.jpg' 
     },
     { 
         title: 'Teman Sembuh', 
         description: 'Penyediaan fasilitas dukungan kesehatan mental melalui pendekatan peer support oleh Bi-Friend.', 
         icon: MessagesSquare, 
         color: 'bg-rose-50 text-rose-500',
-        image: '/images/divisi-teman-sembuh.jpg' 
+        image: '/9.jpg' 
     },
     { 
         title: 'Teman Tumbuh', 
         description: 'Konten edukasi seputar kesehatan mental dan pendidikan, termasuk upgrading class untuk Bi-Family.', 
         icon: GraduationCap, 
         color: 'bg-emerald-50 text-emerald-600',
-        image: '/images/divisi-teman-tumbuh.jpg' 
+        image: '/11.jpg' 
     },
     { 
         title: 'Binar Goes To You', 
         description: 'Mendampingi chapter, mengadakan pengurus chapter, dan menjembatani kolaborasi.', 
         icon: UsersRound, 
         color: 'bg-yellow-50 text-yellow-600',
-        image: '/images/divisi-goes-to-you.jpg' 
+        image: '/8.jpg' 
     },
     { 
         title: 'Med-U', 
         description: 'Mengabadikan momen perjalanan Binar Foundation dan mempublikasikannya ke berbagai platform.', 
         icon: ImageIcon, 
         color: 'bg-violet-50 text-violet-600',
-        image: '/images/divisi-med-u.jpg' 
+        image: '/7.jpg' 
     },
 ];
 
@@ -89,18 +89,18 @@ const ProgramsPage = () => {
             />
 
             <section className="w-full bg-white pb-16 lg:pb-24">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-16 lg:space-y-24">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-16 lg:space-y-24">
                     
                     {/* SECTION 1: DIVISI UTAMA DENGAN GAMBAR */}
                     <div>
                         <div className="mb-6 lg:mb-8">
                             <span className="inline-block bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">Bagian di Binar</span>
-                            <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">Divisi Utama</h2>
+                            <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-slate-900 tracking-tight">Divisi Utama</h2>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6">
                             {DIVISIONS.map(({ title, description, icon: Icon, color, image }) => (
-                                <div key={title} className="group rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
+                                <div key={title} className="group rounded-2xl border border-slate-100 bg-gradient-to-br from-white via-slate-50 to-blue-50/60 shadow-sm overflow-hidden flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                                     
                                     {/* 2. AREA GAMBAR DI ATAS TULISAN */}
                                     <div className="w-full aspect-[21/10] bg-slate-100 relative overflow-hidden border-b border-slate-50">
@@ -132,7 +132,7 @@ const ProgramsPage = () => {
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
                                 <div>
                                     <span className="inline-block bg-white text-blue-600 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full shadow-sm mb-3">Dampak Nyata</span>
-                                    <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">Program Kami</h2>
+                                    <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-slate-900 tracking-tight">Program Kami</h2>
                                 </div>
                                 <div className="flex p-1.5 bg-white rounded-2xl shadow-sm max-w-xs border border-slate-100">
                                     <button 
@@ -153,7 +153,7 @@ const ProgramsPage = () => {
                                 {(activeTab === 'internal' ? INTERNAL_PROGRAMS : EXTERNAL_PROGRAMS).map((prog) => {
                                     const Icon = prog.icon;
                                     return (
-                                        <div key={prog.title} className="bg-white p-5 lg:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+                                        <div key={prog.title} className="bg-gradient-to-br from-white via-white to-slate-50 p-5 lg:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
                                             <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-2xl ${prog.color}`}>
                                                 <Icon size={20} className="stroke-[2]" />
                                             </div>
@@ -170,11 +170,11 @@ const ProgramsPage = () => {
                     <div>
                         <div className="mb-6 lg:mb-8">
                             <span className="inline-block bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">Jaringan Gerakan</span>
-                            <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">Mitra Kolaborasi</h2>
+                            <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-slate-900 tracking-tight">Mitra Kolaborasi</h2>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
                             {PARTNERS.map((partner, index) => (
-                                <div key={index} className="flex gap-4 p-5 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 items-start">
+                                <div key={index} className="flex gap-4 p-5 rounded-2xl border border-slate-100 bg-gradient-to-br from-white via-white to-emerald-50/60 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 items-start">
                                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
                                         <Handshake size={20} />
                                     </div>
@@ -192,11 +192,11 @@ const ProgramsPage = () => {
                         <div className="p-6 lg:p-10">
                             <div className="mb-8">
                                 <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-4">Chapter</span>
-                                <h2 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">Perluasan Gerakan ke Daerah</h2>
+                                <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-white tracking-tight">Perluasan Gerakan ke Daerah</h2>
                             </div>
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                                 {CHAPTERS.map(({ title, items, icon: Icon }) => (
-                                    <div key={title} className="rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm p-6">
+                                    <div key={title} className="rounded-2xl bg-white/15 border border-white/25 backdrop-blur-sm p-6">
                                         <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-yellow-400 text-slate-900">
                                             <Icon size={20} className="stroke-[2.25]" />
                                         </div>

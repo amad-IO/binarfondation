@@ -7,7 +7,13 @@
 
 @layer base {
   body {
-    @apply antialiased text-slate-900 bg-white;
+    @apply antialiased text-slate-900;
+    background-color: #ffffff;
+    background-image:
+      radial-gradient(circle at top left, rgba(59, 130, 246, 0.10), transparent 28%),
+      radial-gradient(circle at top right, rgba(245, 158, 11, 0.08), transparent 24%),
+      radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.05), transparent 26%),
+      linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #ffffff 100%);
   }
 }
 

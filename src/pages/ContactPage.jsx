@@ -45,7 +45,7 @@ const ContactPage = () => {
             />
 
             <section className="w-full pb-16 lg:pb-24 bg-white">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-6 lg:space-y-8">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-6 lg:space-y-8">
 
                     {/* ROW ATAS: 3 KOLOM */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -54,7 +54,7 @@ const ContactPage = () => {
                         <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm flex flex-col">
                             <div className="mb-5">
                                 <span className="inline-block bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-full mb-3">Jejaring Sosial</span>
-                                <h3 className="text-lg font-extrabold text-slate-900">Sosial Media Resmi</h3>
+                                <h3 className="text-xl lg:text-2xl font-extrabold text-slate-900">Sosial Media Resmi</h3>
                             </div>
                             <div className="space-y-3 flex-1">
                                 {SOCIAL_MEDIA.map((social) => {
@@ -85,7 +85,7 @@ const ContactPage = () => {
                         <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm flex flex-col">
                             <div className="mb-5">
                                 <span className="inline-block bg-yellow-50 text-yellow-700 text-xs font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-full mb-3">Layanan Langsung</span>
-                                <h3 className="text-lg font-extrabold text-slate-900">Merchandise & Kontak</h3>
+                                <h3 className="text-xl lg:text-2xl font-extrabold text-slate-900">Merchandise & Kontak</h3>
                             </div>
                             <div className="space-y-3 flex-1">
                                 {CONTACT_ITEMS.map((item) => {
@@ -123,7 +123,7 @@ const ContactPage = () => {
                                     </span>
                                     <div>
                                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200 mb-0.5">Suara Pengguna</p>
-                                        <h3 className="text-lg font-extrabold text-white">Hubungan Komunitas</h3>
+                                        <h3 className="text-xl lg:text-2xl font-extrabold text-white">Hubungan Komunitas</h3>
                                     </div>
                                 </div>
                                 <p className="text-sm leading-relaxed text-blue-100 mb-5">
@@ -157,7 +157,7 @@ const ContactPage = () => {
                     <div className="rounded-[2rem] border border-slate-100 bg-white p-6 lg:p-8 shadow-sm">
                         <div className="mb-6">
                             <span className="inline-block bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-full mb-3">Sekretariat Resmi</span>
-                            <h2 className="text-xl font-extrabold text-slate-900">Lokasi & Alamat Kantor</h2>
+                            <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-900">Lokasi & Alamat Kantor</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {OFFICE_ADDRESSES.map((office) => (
@@ -186,7 +186,7 @@ const ContactPage = () => {
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                 <div>
                                     <span className="inline-block bg-white text-blue-600 text-xs font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-full shadow-sm mb-3 border border-blue-50">Prosedur Kerja Sama</span>
-                                    <h2 className="text-xl font-extrabold text-slate-900">SOP Kolaborasi Kemitraan</h2>
+                                    <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-900">SOP Kolaborasi Kemitraan</h2>
                                 </div>
                                 <a href="mailto:binarfoundation1@gmail.com"
                                     className="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-blue-700 hover:shadow-md shrink-0 gap-2">

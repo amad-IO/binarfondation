@@ -18,7 +18,7 @@ const EducationPage = () => {
             />
 
             <section className="w-full bg-white pb-8 lg:pb-12">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-5 lg:space-y-6">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-5 lg:space-y-6">
 
                     {/* 3 blok edukasi */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
@@ -29,7 +29,7 @@ const EducationPage = () => {
                                     <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-2xl ${block.color}`}>
                                         <Icon size={22} className="stroke-[2]" />
                                     </div>
-                                    <h2 className="text-lg font-bold text-slate-900">{block.title}</h2>
+                                    <h2 className="text-xl lg:text-2xl font-bold text-slate-900">{block.title}</h2>
                                     <p className="mt-2 text-sm leading-relaxed text-slate-600">{block.description}</p>
                                 </div>
                             );

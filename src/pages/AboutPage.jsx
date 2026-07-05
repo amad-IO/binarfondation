@@ -30,7 +30,7 @@ const AboutPage = () => {
             />
 
             <section className="w-full bg-slate-50/50 pb-20 lg:pb-28">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-12 lg:space-y-16 pt-12">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12 lg:space-y-16 pt-12">
 
                     {/* SEKSI 1: VISI & FILOSOFI NAMA (GRID SEIMBANG & RINGKAS) */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -42,7 +42,7 @@ const AboutPage = () => {
                                     <Sparkles className="text-blue-600" size={12} />
                                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">Visi Utama Gerakan</p>
                                 </div>
-                                <h2 className="text-base lg:text-lg font-extrabold text-slate-950 leading-snug tracking-tight">
+                                <h2 className="text-lg lg:text-2xl font-extrabold text-slate-950 leading-snug tracking-tight">
                                     "{vision}"
                                 </h2>
                             </div>
@@ -50,7 +50,7 @@ const AboutPage = () => {
                             {/* Bingkai Gambar yang Ceper dan Proporsional (max-w-md) */}
                             <div className="rounded-xl overflow-hidden aspect-video bg-white p-1.5 border border-blue-100/60 shadow-2xs w-full max-w-md mx-auto lg:mx-0">
                                 <img
-                                    src="/images/kegiatan-utama.jpg"
+                                    src="/10.jpg"
                                     alt="Kegiatan utama Binar"
                                     className="w-full h-full object-cover rounded-lg"
                                 />
@@ -106,7 +106,7 @@ const AboutPage = () => {
                             <div className="space-y-4">
                                 <div>
                                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-1">Langkah Kerja</p>
-                                    <h2 className="text-xl lg:text-2xl font-extrabold text-slate-900 tracking-tight">Misi Gerakan</h2>
+                                    <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-slate-900 tracking-tight">Misi Gerakan</h2>
                                 </div>
                                 <p className="text-xs text-slate-500 leading-relaxed max-w-xs hidden xl:block">
                                     Implementasi program kerja terstruktur guna merealisasikan pilar-pilar utama yayasan secara transparan.
@@ -131,7 +131,7 @@ const AboutPage = () => {
                         <div className="flex items-center justify-between gap-4 border-b border-slate-100 pb-3">
                             <div>
                                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-1">Core Values</p>
-                                <h2 className="text-xl lg:text-2xl font-extrabold text-slate-900 tracking-tight">Pedoman Arah Gerakan</h2>
+                                <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-slate-900 tracking-tight">Pedoman Arah Gerakan</h2>
                             </div>
                             <ArrowRight className="hidden md:block text-blue-600" size={20} />
                         </div>
