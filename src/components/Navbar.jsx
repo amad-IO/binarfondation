@@ -30,8 +30,8 @@ const Navbar = () => {
 
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-none ${isScrolled ? 'pt-4 pb-2' : 'py-4 lg:py-5'}`}>
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 pointer-events-auto">
+        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isMobileMenuOpen ? 'h-screen' : ''} ${isScrolled ? 'pt-4 pb-2' : 'py-4 lg:py-5'}`}>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className={`flex items-center justify-between px-4 sm:px-5 py-2 mx-auto max-w-6xl rounded-2xl transition-all duration-300 relative border ${
                     isMobileMenuOpen
                         ? 'bg-white border-gray-100 shadow-sm z-50'
@@ -105,7 +105,7 @@ const Navbar = () => {
 
                     {/* Mobile Dropdown — CSS transition, no framer-motion */}
                     <div className={`absolute top-[calc(100%+12px)] right-0 w-[200px] bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 py-3 px-2 flex flex-col gap-0.5 lg:hidden z-50 origin-top-right transition-all duration-200 ${
-                        isMobileMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'
+                        isMobileMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                     }`}>
                         {navLinks.map((link) => (
                             <NavLink
