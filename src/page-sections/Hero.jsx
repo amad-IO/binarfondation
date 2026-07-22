@@ -162,7 +162,7 @@ const Hero = () => {
                         src={heroImage}
                         alt="Relawan Binar Foundation"
                         fetchPriority="high"
-                        className="relative z-10 w-full max-h-[50vh] lg:max-h-[60vh] object-contain drop-shadow-sm mx-auto"
+                        className="relative z-10 w-full max-h-[50vh] lg:max-h-[60vh] object-contain drop-shadow-sm mx-auto pointer-events-none select-none"
                     />
 
                     {/* Mascot Tersipu Malu */}
