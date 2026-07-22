@@ -25,7 +25,7 @@ const EducationPage = () => {
                         {educationBlocks.map((block) => {
                             const Icon = block.icon;
                             return (
-                                <div key={block.title} className={`rounded-[2rem] bg-gradient-to-br ${block.grad} p-6 lg:p-7 border border-white/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200`}>
+                                <div key={block.title} className={`flex flex-col justify-center rounded-[2rem] bg-gradient-to-br ${block.grad} p-6 lg:p-7 border border-white/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200`}>
                                     <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-2xl ${block.color}`}>
                                         <Icon size={22} className="stroke-[2]" />
                                     </div>

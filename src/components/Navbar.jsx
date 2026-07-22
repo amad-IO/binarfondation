@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import Button from './Button';
 import logoImage from '../assets/logo.PNG';
 
 // TIDAK ADA import framer-motion — animasi menu pakai CSS transition
@@ -29,9 +28,6 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    useEffect(() => {
-        setIsMobileMenuOpen(false);
-    }, [location.pathname]);
 
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-none ${isScrolled ? 'pt-4 pb-2' : 'py-4 lg:py-5'}`}>
@@ -116,6 +112,7 @@ const Navbar = () => {
                                 key={link.name}
                                 to={link.to}
                                 end={link.to === '/'}
+                                onClick={() => setIsMobileMenuOpen(false)}
                                 className={`px-4 py-2.5 text-[15px] font-medium transition-colors duration-200 block rounded-xl ${
                                     location.pathname === link.to
                                         ? 'text-blue-600 bg-blue-50/50'
@@ -126,7 +123,7 @@ const Navbar = () => {
                             </NavLink>
                         ))}
                         <div className="mt-2 pt-3 px-2 border-t border-gray-100 sm:hidden">
-                            <Link to="/kontak" className="inline-flex w-full whitespace-nowrap items-center justify-center px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm text-sm">
+                            <Link onClick={() => setIsMobileMenuOpen(false)} to="/kontak" className="inline-flex w-full whitespace-nowrap items-center justify-center px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm text-sm">
                                 Contact Us
                             </Link>
                         </div>

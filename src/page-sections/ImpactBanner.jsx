@@ -17,6 +17,7 @@ const useInView = (options = {}) => {
         }, { rootMargin: options.margin || '0px' });
         observer.observe(el);
         return () => observer.disconnect();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return [ref, inView];
 };

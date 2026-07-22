@@ -74,10 +74,22 @@ const Hero = () => {
             id="beranda"
             className="relative w-full pt-28 pb-12 lg:pt-24 lg:pb-12 overflow-hidden bg-white"
         >
-            {/* Subtle Glow Background */}
+            {/* Subtle Glow Background & Floating Ornaments */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-[-5%] left-[-5%] w-[50%] h-[50%] bg-blue-100/50 rounded-full blur-[100px]"></div>
                 <div className="absolute top-[45%] right-[15%] w-[40%] h-[40%] bg-yellow-100/40 rounded-full blur-[80px]"></div>
+                
+                {/* Floating Stars */}
+                <svg className="absolute top-[20%] left-[10%] w-6 h-6 text-yellow-400 animate-float opacity-70" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg className="absolute top-[60%] right-[10%] w-8 h-8 text-blue-300 animate-float-delayed opacity-50" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg className="absolute bottom-[20%] left-[40%] w-5 h-5 text-orange-300 animate-float opacity-60" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+
                 {/* Fade out mask at the bottom to prevent sharp cut-off line */}
                 <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white to-transparent"></div>
             </div>
@@ -151,6 +163,13 @@ const Hero = () => {
                         alt="Relawan Binar Foundation"
                         fetchPriority="high"
                         className="relative z-10 w-full max-h-[50vh] lg:max-h-[60vh] object-contain drop-shadow-sm mx-auto"
+                    />
+
+                    {/* Mascot Tersipu Malu */}
+                    <img 
+                        src="/tersipu malu.PNG" 
+                        alt="Binar Mascot Tersipu Malu" 
+                        className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 w-24 sm:w-32 lg:w-40 z-20 animate-float drop-shadow-lg pointer-events-none"
                     />
 
                     {/* Floating Bubble */}

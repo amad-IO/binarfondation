@@ -29,125 +29,132 @@ const AboutPage = () => {
                 description="Membangun Generasi Emas Indonesia yang Sehat Mental & Berdaya"
             />
 
-            <section className="w-full bg-slate-50/50 pb-20 lg:pb-28">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12 lg:space-y-16 pt-12">
+            <section className="w-full bg-slate-50/50 pb-20 lg:pb-32 overflow-hidden">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl pt-16 lg:pt-24 space-y-24 lg:space-y-40">
+                    
+                    {/* SECTION 1: GIANT TYPOGRAPHY VISION (EDITORIAL HERO) */}
+                    <div className="relative text-center max-w-4xl mx-auto">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12 opacity-5 pointer-events-none">
+                            <Sparkles size={200} />
+                        </div>
+                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-blue-600 mb-8">Visi Utama Kami</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-950 leading-[1.1] tracking-tight text-balance">
+                            "Mewujudkan generasi muda Indonesia yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">sehat mental, bertumbuh</span>, dan mampu memberdayakan lingkungannya."
+                        </h2>
+                    </div>
 
-                    {/* SEKSI 1: VISI & FILOSOFI NAMA (GRID SEIMBANG & RINGKAS) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                        
-                        {/* Box Kiri: Visi Utama — Ukuran Teks & Bingkai Gambar Diperkecil */}
-                        <div className="lg:col-span-7 rounded-2xl border border-blue-100 bg-blue-50/40 p-5 lg:p-6 flex flex-col justify-between gap-4 shadow-sm">
-                            <div>
-                                <div className="flex items-center gap-1.5 mb-1">
-                                    <Sparkles className="text-blue-600" size={12} />
-                                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">Visi Utama Gerakan</p>
+                    {/* SECTION 2: ASYMMETRIC ABOUT & HISTORY */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                        <div className="lg:col-span-5 relative flex justify-center lg:justify-start px-6 sm:px-12 lg:px-0">
+                            <div className="relative group w-full max-w-md">
+                                {/* Latar Belakang Biru / Card Effect */}
+                                <div className="absolute inset-0 bg-blue-600 rounded-[2.5rem] transform translate-x-4 translate-y-4 shadow-lg group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500 ease-out"></div>
+                                
+                                {/* Bingkai Gambar (Rotate 8 deg -> 0 deg) */}
+                                <div className="aspect-[4/5] rounded-[2rem] bg-white p-3 shadow-2xl relative z-10 transform rotate-[8deg] group-hover:rotate-0 transition-all duration-500 ease-out origin-center">
+                                    <img
+                                        src="/10.jpg"
+                                        alt="Kegiatan utama Binar"
+                                        className="w-full h-full object-cover rounded-2xl"
+                                    />
                                 </div>
-                                <h2 className="text-lg lg:text-2xl font-extrabold text-slate-950 leading-snug tracking-tight">
-                                    "{vision}"
-                                </h2>
-                            </div>
-                            
-                            {/* Bingkai Gambar yang Ceper dan Proporsional (max-w-md) */}
-                            <div className="rounded-xl overflow-hidden aspect-video bg-white p-1.5 border border-blue-100/60 shadow-2xs w-full max-w-md mx-auto lg:mx-0">
-                                <img
-                                    src="/10.jpg"
-                                    alt="Kegiatan utama Binar"
-                                    className="w-full h-full object-cover rounded-lg"
-                                />
+                                
+                                {/* Badge 2026 */}
+                                <div className="absolute -bottom-8 -left-8 bg-white p-5 shadow-xl rounded-2xl border border-slate-100 max-w-[180px] hidden md:block z-20 transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-2">
+                                    <p className="text-3xl font-extrabold text-blue-600">2026</p>
+                                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Resmi Menjadi Yayasan</p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Box Kanan: Tentang Binar & Komposisi Makna */}
-                        <div className="lg:col-span-5 flex flex-col gap-4">
-                            {/* Tentang Binar */}
-                            <div className="rounded-2xl border border-slate-100 bg-white p-5 lg:p-6 shadow-2xs flex-1 flex flex-col justify-center">
-                                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-1.5">Tentang Binar</p>
-                                <p className="text-xs lg:text-sm text-slate-600 leading-relaxed">
-                                    Berawal dari Binar Community, sebuah komunitas yang lahir dari ketulusan hati pada tanggal 11 Desember 2024, kini kami telah berkiprah lebih luas.
-                                    Pada tahun 2026 ini, Binar resmi menjadi yayasan: <span className="font-bold text-blue-600">BINAR FOUNDATION.</span>
-                                </p>
-                                <p className="mt-2 text-xs lg:text-sm text-slate-600 leading-relaxed">
-                                    Berfokus pada penguatan kesehatan mental dan pendidikan untuk anak serta remaja di Indonesia.
-                                </p>
-                            </div>
-
-                            {/* Sub Grid: Berbinar & Bersinar */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="rounded-xl border border-blue-100 bg-white p-4 shadow-2xs">
-                                    <h3 className="text-xs font-bold text-slate-900 mb-1">Berbinar</h3>
-                                    <p className="text-[11px] text-slate-500 leading-relaxed">
-                                        Mengekspresikan emosi mendalam, penuh kejujuran, dan tulus apa adanya menuju kebahagiaan.
+                        <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-8">
+                            <div>
+                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-4 border-l-2 border-blue-600 pl-3">Jejak Langkah</p>
+                                <h3 className="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">Dari Komunitas Hati,<br/>Menuju Dampak Nyata.</h3>
+                                <div className="space-y-4 text-slate-600 text-sm lg:text-base leading-relaxed">
+                                    <p>
+                                        Berawal dari <strong>Binar Community</strong>, sebuah komunitas yang lahir murni dari ketulusan hati pada tanggal 11 Desember 2024. Kami mulai dengan langkah kecil, namun dengan mimpi yang besar untuk sesama.
+                                    </p>
+                                    <p>
+                                        Kini, pada tahun 2026, kami resmi melangkah lebih jauh dan berevolusi menjadi <strong>BINAR FOUNDATION</strong>. Sebuah yayasan yang berfokus secara profesional pada penguatan kesehatan mental dan pendidikan inklusif untuk anak serta remaja di Indonesia.
                                     </p>
                                 </div>
-                                <div className="rounded-xl bg-blue-600 p-4 shadow-sm text-white relative overflow-hidden"
-                                    style={{ background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' }}>
-                                    <h3 className="text-xs font-bold text-white mb-1">Bersinar</h3>
-                                    <p className="text-[11px] text-blue-100 leading-relaxed">
+                            </div>
+
+                            {/* FILOSOFI (MAGAZINE STYLE QUOTES) */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+                                <div className="p-6 bg-slate-900 text-white rounded-2xl relative overflow-hidden group">
+                                    <Heart size={100} className="absolute -bottom-6 -right-6 text-white/5 group-hover:scale-110 transition-transform duration-500" />
+                                    <h4 className="text-xl font-extrabold mb-3">Berbinar</h4>
+                                    <p className="text-xs text-slate-400 leading-relaxed relative z-10">
+                                        Mengekspresikan emosi mendalam, penuh kejujuran, tulus apa adanya menuju kebahagiaan.
+                                    </p>
+                                </div>
+                                <div className="p-6 bg-blue-600 text-white rounded-2xl relative overflow-hidden group">
+                                    <Sparkles size={100} className="absolute -bottom-6 -right-6 text-white/10 group-hover:scale-110 transition-transform duration-500" />
+                                    <h4 className="text-xl font-extrabold mb-3">Bersinar</h4>
+                                    <p className="text-xs text-blue-100 leading-relaxed relative z-10">
                                         Diri yang selalu ingin bertumbuh, berdaya, dan mampu memberdayakan sekitar.
                                     </p>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    {/* SEKSI 2: MISI STRATEGIS DENGAN POLA GRAFIS */}
-                    <div className="rounded-2xl bg-white border border-slate-100 p-6 lg:p-8 shadow-sm relative overflow-hidden">
-                        <svg className="absolute inset-0 w-full h-full opacity-[0.02] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <pattern id="lines" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
-                                    <line x1="0" y1="0" x2="0" y2="20" stroke="#2563eb" strokeWidth="1" />
-                                </pattern>
-                            </defs>
-                            <rect width="100%" h="100%" fill="url(#lines)" />
-                        </svg>
+                    {/* SECTION 3: EDITORIAL STICKY MISSIONS */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative">
+                        
+                        {/* KIRI: STICKY TITLE */}
+                        <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-6">
+                            <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-400">Langkah Kerja</p>
+                            <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.1] tracking-tight">
+                                Misi<br/>Gerakan
+                            </h2>
+                            <div className="w-16 h-1 bg-blue-600 rounded-full"></div>
+                            <p className="text-sm lg:text-base text-slate-500 leading-relaxed max-w-sm">
+                                Implementasi program kerja terstruktur guna merealisasikan pilar-pilar utama yayasan secara transparan dan berdampak.
+                            </p>
+                        </div>
 
-                        <div className="relative z-10 grid grid-cols-1 xl:grid-cols-[0.8fr_1.2fr] gap-6 items-start">
-                            <div className="space-y-4">
-                                <div>
-                                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-1">Langkah Kerja</p>
-                                    <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-slate-900 tracking-tight">Misi Gerakan</h2>
+                        {/* KANAN: SCROLLING LIST */}
+                        <div className="lg:col-span-7 space-y-6 lg:space-y-12 lg:pt-32 pb-16">
+                            {missions.map((mission, index) => (
+                                <div key={mission} className="flex gap-6 lg:gap-8 border-t border-slate-200 pt-6 lg:pt-8 group">
+                                    <span className="text-4xl lg:text-6xl font-extrabold text-slate-200 group-hover:text-blue-600 transition-colors duration-500 font-serif italic">
+                                        0{index + 1}
+                                    </span>
+                                    <p className="text-base lg:text-2xl font-medium text-slate-800 leading-relaxed lg:leading-snug">
+                                        {mission}
+                                    </p>
                                 </div>
-                                <p className="text-xs text-slate-500 leading-relaxed max-w-xs hidden xl:block">
-                                    Implementasi program kerja terstruktur guna merealisasikan pilar-pilar utama yayasan secara transparan.
-                                </p>
-                            </div>
-
-                            <ul className="space-y-3">
-                                {missions.map((mission, index) => (
-                                    <li key={mission} className="flex gap-4 rounded-xl bg-blue-50/40 p-4 border border-blue-100/40 items-start transition-all hover:bg-blue-50/80">
-                                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-[10px] font-bold text-white shadow-sm mt-0.5">
-                                            {index + 1}
-                                        </span>
-                                        <span className="text-xs lg:text-sm text-slate-700 leading-relaxed">{mission}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            ))}
                         </div>
                     </div>
 
-                    {/* SEKSI 3: CORE VALUES */}
-                    <div className="rounded-2xl border border-slate-100 bg-white p-5 lg:p-8 shadow-2xs space-y-6">
-                        <div className="flex items-center justify-between gap-4 border-b border-slate-100 pb-3">
+                    {/* SECTION 4: CORE VALUES (MINIMALIST GRID) */}
+                    <div>
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16 border-b-2 border-slate-900 pb-6">
                             <div>
-                                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-1">Core Values</p>
-                                <h2 className="text-2xl lg:text-[2.35rem] font-extrabold text-slate-900 tracking-tight">Pedoman Arah Gerakan</h2>
+                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">Pedoman</p>
+                                <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">Core Values</h2>
                             </div>
-                            <ArrowRight className="hidden md:block text-blue-600" size={20} />
+                            <p className="text-sm text-slate-500 max-w-xs leading-relaxed hidden md:block">
+                                Nilai-nilai dasar yang menjadi kompas bagi setiap langkah dan kebijakan Binar Foundation.
+                            </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">
-                            {coreValues.map((value) => {
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                            {coreValues.map((value, idx) => {
                                 const Icon = value.icon;
                                 return (
-                                    <div key={value.title} className="rounded-xl border border-slate-100 bg-white p-4 hover:border-blue-200 hover:shadow-xs transition-all group flex items-start gap-3.5">
-                                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-100">
-                                            <Icon size={18} className="stroke-[2.25]" />
+                                    <div key={value.title} className="group">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <span className="text-xs font-bold text-slate-300">0{idx + 1}</span>
+                                            <div className="h-px bg-slate-200 flex-1 group-hover:bg-blue-600 transition-colors duration-500"></div>
+                                            <Icon size={20} className="text-slate-400 group-hover:text-blue-600 transition-colors duration-500" />
                                         </div>
-                                        <div className="space-y-1">
-                                            <h3 className="text-sm font-bold text-slate-950 transition-colors group-hover:text-blue-700">{value.title}</h3>
-                                            <p className="text-xs leading-relaxed text-slate-500">{value.description}</p>
-                                        </div>
+                                        <h3 className="text-xl font-extrabold text-slate-900 mb-3">{value.title}</h3>
+                                        <p className="text-sm text-slate-600 leading-relaxed">{value.description}</p>
                                     </div>
                                 );
                             })}

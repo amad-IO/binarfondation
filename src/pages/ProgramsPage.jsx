@@ -64,7 +64,7 @@ const INTERNAL_PROGRAMS = [
 const EXTERNAL_PROGRAMS = [
     { title: 'Konseling Gratis', desc: 'Layanan teman curhat sebaya online oleh mahasiswa/i psikologi yang berkompeten untuk Bi-Star.', icon: HelpCircle, color: 'bg-teal-100 text-teal-600' },
     { title: 'Edukasi Kesehatan Mental', desc: 'Mengedukasi Bi-star melalui konten edukatif, live instagram, podcast, hingga psikoedukasi offline.', icon: GraduationCap, color: 'bg-blue-100 text-blue-600' },
-    { title: 'Mengajar Anak Marginal', desc: 'Program unggulan mendampingi adik-adip di wilayah marginal seputar kesehatan mental, karakter, dan akademik.', icon: BookOpen, color: 'bg-orange-100 text-orange-600' },
+    { title: 'Mengajar Anak Marginal', desc: 'Program unggulan mendampingi adik-adik di wilayah marginal seputar kesehatan mental, karakter, dan akademik.', icon: BookOpen, color: 'bg-orange-100 text-orange-600' },
     { title: 'Binar Goes to School', desc: 'Kolaborasi dengan berbagai sekolah untuk mengedukasi siswa seputar pembentukan karakter dan kesehatan mental.', icon: School, color: 'bg-violet-100 text-violet-600' },
     { title: 'Binar Charity & Donasi', desc: 'Open donasi berkala untuk terus bertahan dan memberikan dampak nyata bagi ruang lingkup sekitar.', icon: HandHeart, color: 'bg-red-100 text-red-500' },
 ];

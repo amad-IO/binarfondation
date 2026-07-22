@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, FileText, PieChart, ShieldCheck, Heart } from 'lucide-react';
+import { ChevronDown, PieChart, ShieldCheck, Heart, Copy, CheckCircle2, CreditCard, Wallet, Package, MessageCircle } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 
 const BUDGET_DATA = [
@@ -26,8 +26,41 @@ const BUDGET_DATA = [
     }
 ];
 
+const CopyableAccount = ({ label, accountNumber, name, type }) => {
+    const [copied, setCopied] = useState(false);
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText(accountNumber);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    return (
+        <div className="flex items-center justify-between p-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition-colors">
+            <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 shrink-0">
+                    {type === 'bank' ? <CreditCard size={18} /> : <Wallet size={18} />}
+                </div>
+                <div>
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-0.5">{label}</p>
+                    <p className="text-lg font-bold text-slate-900 font-mono tracking-tight">{accountNumber}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">a.n {name}</p>
+                </div>
+            </div>
+            <button 
+                onClick={handleCopy}
+                className={`p-2.5 rounded-lg border transition-all flex items-center justify-center gap-1.5 ${copied ? 'bg-emerald-50 border-emerald-200 text-emerald-600' : 'bg-white border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-600 hover:shadow-sm'}`}
+                title="Salin Nomor Rekening"
+            >
+                {copied ? <><CheckCircle2 size={16} /> <span className="text-xs font-bold hidden sm:inline">Tersalin</span></> : <><Copy size={16} /> <span className="text-xs font-bold hidden sm:inline">Salin</span></>}
+            </button>
+        </div>
+    );
+};
+
 const DonatePage = () => {
     const [openIndex, setOpenIndex] = useState(null);
+    const [activeTab, setActiveTab] = useState('dana');
 
     const toggleAccordion = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -37,36 +70,109 @@ const DonatePage = () => {
         <>
             <PageHeader
                 eyebrow="Donasi & Transparansi"
-                title="Mari Bergandeng Tangan Memberi Dampak Nyata"
-                description="Dukung wadah kebaikan ini untuk terus bertahan dan memberikan ruang aman bagi kesehatan mental dan pendidikan anak-anak marginal."
+                title="Satu Donasi, Wujudkan Banyak Kebaikan"
+                description="Setiap rupiah yang kamu berikan akan diakumulasikan ke dalam dana abadi Binar Foundation untuk mendukung pendidikan dan kesehatan mental."
             />
 
             {/* Menggunakan background slate tipis untuk memberikan efek pop-out pada kartu putih */}
             <section className="w-full bg-slate-50/50 pb-16 lg:pb-24">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-10 pt-12">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12 pt-12">
 
-                    {/* HERO CARD (KARTU UTAMA DONASI) */}
-                    <div className="rounded-2xl border border-blue-100 bg-white p-6 lg:p-8 flex flex-col sm:flex-row items-start gap-6 shadow-xs">
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100/50">
-                            <ShieldCheck size={24} className="stroke-[2.25]" />
+                    {/* SPLIT SCREEN & TABS (OPSI 1 MODIFIED) */}
+                    <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto items-stretch">
+                        
+                        {/* LEFT COLUMN: PHOTO */}
+                        <div className="lg:w-[45%] flex flex-col justify-center bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-3xl p-8 lg:p-12 border border-blue-100 shadow-sm relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/40 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-200/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4"></div>
+                            
+                            <div className="relative z-10">
+                                <h3 className="text-2xl lg:text-3xl font-extrabold text-blue-950 mb-4 leading-tight">Dukunganmu Mengubah Hidup Mereka</h3>
+                                <p className="text-sm text-blue-800/80 leading-relaxed mb-6">Pilih metode donasi yang paling nyaman untukmu. Berapapun nominal atau barang yang kamu berikan, itu adalah wujud kepedulian yang sangat berarti.</p>
+                                <div className="rounded-2xl overflow-hidden shadow-lg border-2 border-white rotate-2 hover:rotate-0 transition-transform duration-300">
+                                    <img src="/9.jpg" alt="Kegiatan Binar Foundation" className="w-full h-auto object-cover max-h-64" />
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex-grow">
-                            <span className="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-2.5">
-                                Akuntabilitas Finansial
-                            </span>
-                            <h3 className="text-xl lg:text-2xl font-extrabold text-slate-900 mb-1.5">Binar Charity &amp; Donasi</h3>
-                            <p className="text-xs lg:text-sm text-slate-500 leading-relaxed mb-5">
-                                Kami melakukan Open Donasi secara berkala. Seluruh dana yang masuk dipertanggungjawabkan sepenuhnya secara terbuka demi menjaga keberlanjutan operasional yayasan.
-                            </p>
-                            <button className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold text-xs px-5 py-3 rounded-xl hover:bg-blue-700 transition-all hover:shadow-md shadow-sm group">
-                                <Heart size={14} className="stroke-[2.5] transition-transform group-hover:scale-110" />
-                                Salurkan Donasi Sekarang
-                            </button>
+
+                        {/* RIGHT COLUMN: TABS CARD */}
+                        <div className="lg:w-[55%] rounded-3xl border border-blue-100 bg-white p-6 sm:p-8 shadow-sm flex flex-col h-full">
+                            
+                            {/* TABS HEADER */}
+                            <div className="flex border-b border-slate-100 mb-6 gap-6">
+                                <button 
+                                    onClick={() => setActiveTab('dana')} 
+                                    className={`pb-4 px-2 font-bold text-sm lg:text-base transition-all border-b-2 flex items-center gap-2 ${activeTab === 'dana' ? 'border-blue-600 text-blue-600' : 'border-transparent text-slate-400 hover:text-slate-600 hover:border-slate-200'}`}
+                                >
+                                    <ShieldCheck size={18} className={activeTab === 'dana' ? 'text-blue-600' : 'text-slate-400'} />
+                                    Donasi Dana
+                                </button>
+                                <button 
+                                    onClick={() => setActiveTab('barang')} 
+                                    className={`pb-4 px-2 font-bold text-sm lg:text-base transition-all border-b-2 flex items-center gap-2 ${activeTab === 'barang' ? 'border-blue-600 text-blue-600' : 'border-transparent text-slate-400 hover:text-slate-600 hover:border-slate-200'}`}
+                                >
+                                    <Package size={18} className={activeTab === 'barang' ? 'text-blue-600' : 'text-slate-400'} />
+                                    Donasi Barang
+                                </button>
+                            </div>
+
+                            {/* TAB CONTENT */}
+                            <div className="flex-grow flex flex-col">
+                                {activeTab === 'dana' ? (
+                                    <div className="flex flex-col h-full animate-[fadeIn_0.3s_ease-out]">
+                                        <div className="space-y-4 mb-8 flex-grow">
+                                            <CopyableAccount 
+                                                label="Bank Syariah Indonesia (BSI)"
+                                                accountNumber="7295976092"
+                                                name="Syifa Assafira (Bendahara)"
+                                                type="bank"
+                                            />
+                                            <CopyableAccount 
+                                                label="GoPay"
+                                                accountNumber="081371152087"
+                                                name="Syifa Assafira (Bendahara)"
+                                                type="ewallet"
+                                            />
+                                        </div>
+                                        
+                                        <div className="pt-6 border-t border-slate-100 mt-auto">
+                                            <p className="text-xs font-medium text-slate-500 mb-3 text-center">Sudah transfer? Konfirmasi ke admin agar tercatat:</p>
+                                            <a href="https://wa.me/6281371152087" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold text-xs py-3.5 rounded-xl transition-all shadow-sm group">
+                                                <MessageCircle size={16} className="transition-transform group-hover:scale-110" />
+                                                Konfirmasi Donasi Dana
+                                            </a>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="flex flex-col h-full animate-[fadeIn_0.3s_ease-out]">
+                                        <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-6 mb-8 flex-grow">
+                                            <p className="text-sm text-slate-600 leading-relaxed">
+                                                Punya <strong className="text-blue-700">buku cerita, alat tulis, perlengkapan sekolah, atau pakaian layak pakai?</strong> Yuk salurkan ke Rumah Belajar Binar Foundation.
+                                            </p>
+                                        </div>
+                                        
+                                        <div className="pt-6 border-t border-slate-100 mt-auto">
+                                            <p className="text-xs font-medium text-slate-500 mb-3 text-center">Hubungi kami untuk atur pengirimannya:</p>
+                                            <div className="grid grid-cols-2 gap-3">
+                                                <a href="https://wa.me/6283849583464" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold text-xs py-3.5 px-2 rounded-xl transition-all shadow-sm group">
+                                                    <MessageCircle size={16} className="transition-transform group-hover:scale-110" />
+                                                    Awa (Jatim)
+                                                </a>
+                                                <a href="https://wa.me/6282280002658" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold text-xs py-3.5 px-2 rounded-xl transition-all shadow-sm group">
+                                                    <MessageCircle size={16} className="transition-transform group-hover:scale-110" />
+                                                    Haris (Riau)
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </div>
+
                     </div>
 
                     {/* SEKSI LAPORAN ANGGARAN (ACCORDION) */}
-                    <div className="space-y-4">
+                    <div className="max-w-4xl mx-auto space-y-4">
                         <div className="flex items-center gap-3 border-b border-slate-200 pb-3">
                             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100/40">
                                 <PieChart size={18} className="stroke-[2.25]" />
@@ -115,13 +221,6 @@ const DonatePage = () => {
                                                                     </span>
                                                                 </div>
                                                                 <p className="text-xs leading-relaxed text-slate-500">{report.detail}</p>
-                                                            </div>
-                                                            
-                                                            <div className="pt-2 border-t border-slate-50">
-                                                                <button className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:underline group">
-                                                                    <FileText size={13} className="stroke-[2.25]" />
-                                                                    Lihat Unduhan PDF
-                                                                </button>
                                                             </div>
                                                         </div>
                                                     ))}

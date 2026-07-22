@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Info, BookOpen, Users, HeartHandshake } from 'lucide-react';
 import Hero from '../page-sections/Hero';
+import UpcomingActivities from '../page-sections/UpcomingActivities';
 import ImpactBanner from '../page-sections/ImpactBanner';
 
 const quickLinks = [
@@ -50,6 +51,8 @@ const HomePage = () => {
     return (
         <>
             <Hero />
+            
+            <UpcomingActivities />
 
             <section className="w-full py-14 lg:py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
