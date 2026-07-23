@@ -98,7 +98,7 @@ const Hero = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2 lg:items-center gap-x-8 lg:gap-x-10 gap-y-8 relative z-10">
 
                 {/* LEFT COLUMN (Text + Buttons) */}
-                <div className="order-2 lg:order-1 flex flex-col justify-center">
+                <div className="order-2 lg:order-1 flex flex-col justify-center relative z-20">
                     {/* TEXT AREA */}
                     <div
                         ref={leftRef}

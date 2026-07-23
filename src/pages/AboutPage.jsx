@@ -1,5 +1,9 @@
 import { ArrowRight, BadgeCheck, Heart, Landmark, Sparkles, ShieldCheck, Users } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
 
 const vision = 'Mewujudkan generasi muda Indonesia yang sehat mental, bertumbuh, dan mampu memberdayakan diri serta lingkungannya secara berkelanjutan.';
 
@@ -23,25 +27,32 @@ const coreValues = [
 const AboutPage = () => {
     return (
         <>
-            <PageHeader
-                eyebrow="Tentang BINAR FOUNDATION"
-                title="BINAR FOUNDATION"
-                description="Membangun Generasi Emas Indonesia yang Sehat Mental & Berdaya"
-            />
 
-            <section className="w-full bg-slate-50/50 pb-20 lg:pb-32 overflow-hidden">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl pt-16 lg:pt-24 space-y-24 lg:space-y-40">
-                    
-                    {/* SECTION 1: GIANT TYPOGRAPHY VISION (EDITORIAL HERO) */}
-                    <div className="relative text-center max-w-4xl mx-auto">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12 opacity-5 pointer-events-none">
-                            <Sparkles size={200} />
+
+            <section className="w-full bg-gradient-to-b from-white to-slate-50/80 pb-20 lg:pb-32 overflow-hidden relative">
+                {/* Background decorative elements for hero feel */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl"></div>
+                    <div className="absolute top-20 -left-40 w-72 h-72 bg-emerald-50/60 rounded-full blur-3xl"></div>
+                </div>
+
+                {/* HERO VISION SECTION (FULL SCREEN) */}
+                <div className="min-h-[100svh] flex flex-col justify-center items-center relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl pt-24 pb-12">
+                    <div className="relative text-center max-w-5xl mx-auto">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+                            <Sparkles size={300} />
                         </div>
-                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-blue-600 mb-8">Visi Utama Kami</p>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-950 leading-[1.1] tracking-tight text-balance">
-                            "Mewujudkan generasi muda Indonesia yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">sehat mental, bertumbuh</span>, dan mampu memberdayakan lingkungannya."
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-8 mt-12 lg:mt-0">
+                            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">Visi Utama Kami</p>
+                        </div>
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight text-balance mx-auto">
+                            "Mewujudkan generasi muda Indonesia yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">sehat mental, bertumbuh</span>, dan mampu memberdayakan lingkungannya."
                         </h2>
                     </div>
+                </div>
+
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-24 lg:space-y-40 relative z-10">
 
                     {/* SECTION 2: ASYMMETRIC ABOUT & HISTORY */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -50,13 +61,34 @@ const AboutPage = () => {
                                 {/* Latar Belakang Biru / Card Effect */}
                                 <div className="absolute inset-0 bg-blue-600 rounded-[2.5rem] transform translate-x-4 translate-y-4 shadow-lg group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500 ease-out"></div>
                                 
-                                {/* Bingkai Gambar (Rotate 8 deg -> 0 deg) */}
+                                {/* Bingkai Gambar (Tumpukan Foto) */}
                                 <div className="aspect-[4/5] rounded-[2rem] bg-white p-3 shadow-2xl relative z-10 transform rotate-[8deg] group-hover:rotate-0 transition-all duration-500 ease-out origin-center">
-                                    <img
-                                        src="/10.jpg"
-                                        alt="Kegiatan utama Binar"
-                                        className="w-full h-full object-cover rounded-2xl"
-                                    />
+                                    <Swiper
+                                        effect={'cards'}
+                                        grabCursor={true}
+                                        loop={true}
+                                        modules={[EffectCards]}
+                                        className="w-full h-full rounded-xl overflow-hidden"
+                                    >
+                                        <SwiperSlide>
+                                            <img src="/1.webp" alt="Sejarah Binar 1" className="w-full h-full object-cover" />
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <img src="/2.webp" alt="Sejarah Binar 2" className="w-full h-full object-cover" />
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <img src="/5.jpg" alt="Sejarah Binar 3" className="w-full h-full object-cover" />
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <img src="/3.webp" alt="Sejarah Binar 4" className="w-full h-full object-cover" />
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <img src="/8.jpg" alt="Sejarah Binar 5" className="w-full h-full object-cover" />
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <img src="/10.jpg" alt="Sejarah Binar 6" className="w-full h-full object-cover" />
+                                        </SwiperSlide>
+                                    </Swiper>
                                 </div>
                                 
                                 {/* Badge 2026 */}
@@ -83,17 +115,17 @@ const AboutPage = () => {
 
                             {/* FILOSOFI (MAGAZINE STYLE QUOTES) */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-                                <div className="p-6 bg-slate-900 text-white rounded-2xl relative overflow-hidden group">
-                                    <Heart size={100} className="absolute -bottom-6 -right-6 text-white/5 group-hover:scale-110 transition-transform duration-500" />
-                                    <h4 className="text-xl font-extrabold mb-3">Berbinar</h4>
-                                    <p className="text-xs text-slate-400 leading-relaxed relative z-10">
+                                <div className="p-6 bg-blue-50 border border-blue-100 text-slate-900 rounded-2xl relative overflow-hidden group">
+                                    <Heart size={100} className="absolute -bottom-6 -right-6 text-blue-200/50 group-hover:scale-110 transition-transform duration-500" />
+                                    <h4 className="text-xl font-extrabold mb-3 text-blue-700">Berbinar</h4>
+                                    <p className="text-xs text-slate-600 leading-relaxed relative z-10">
                                         Mengekspresikan emosi mendalam, penuh kejujuran, tulus apa adanya menuju kebahagiaan.
                                     </p>
                                 </div>
-                                <div className="p-6 bg-blue-600 text-white rounded-2xl relative overflow-hidden group">
-                                    <Sparkles size={100} className="absolute -bottom-6 -right-6 text-white/10 group-hover:scale-110 transition-transform duration-500" />
-                                    <h4 className="text-xl font-extrabold mb-3">Bersinar</h4>
-                                    <p className="text-xs text-blue-100 leading-relaxed relative z-10">
+                                <div className="p-6 bg-emerald-50 border border-emerald-100 text-slate-900 rounded-2xl relative overflow-hidden group">
+                                    <Sparkles size={100} className="absolute -bottom-6 -right-6 text-emerald-200/50 group-hover:scale-110 transition-transform duration-500" />
+                                    <h4 className="text-xl font-extrabold mb-3 text-emerald-700">Bersinar</h4>
+                                    <p className="text-xs text-slate-600 leading-relaxed relative z-10">
                                         Diri yang selalu ingin bertumbuh, berdaya, dan mampu memberdayakan sekitar.
                                     </p>
                                 </div>

@@ -39,9 +39,9 @@ const MaintenanceNotification = () => {
                 ${isVisible ? 'opacity-100' : 'opacity-0 md:opacity-100 pointer-events-none'}
             `}>
                 
-                <div className={`pointer-events-auto relative bg-white rounded-[1.25rem] shadow-2xl overflow-hidden transition-all duration-500 
+                <div className={`relative bg-white rounded-[1.25rem] shadow-2xl overflow-hidden transition-all duration-500 
                     w-[85vw] max-w-[280px] md:max-w-none md:w-[520px] p-4 md:py-5 md:px-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 border border-blue-50
-                    ${isVisible ? 'scale-100 md:translate-x-0' : 'scale-95 md:scale-100 md:translate-x-[150%]'}
+                    ${isVisible ? 'scale-100 md:translate-x-0 pointer-events-auto' : 'scale-95 md:scale-100 md:translate-x-[150%] pointer-events-none'}
                 `}>
                     
                     {/* Background Watermark */}

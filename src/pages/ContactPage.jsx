@@ -33,7 +33,7 @@ const SOCIAL_MEDIA = [
 ];
 
 const CONTACT_ITEMS = [
-    { title: 'Merchandise Email', value: 'binarfoundation1@gmail.com', href: 'mailto:binarfoundation1@gmail.com', icon: Mail },
+    { title: 'Email', value: 'binarfoundation1@gmail.com', href: 'mailto:binarfoundation1@gmail.com', icon: Mail },
     { title: 'Contact Person', value: '0823 8451 6469 (Elsa)', href: 'tel:082384516469', icon: PhoneCall },
 ];
 
@@ -60,6 +60,7 @@ const ContactPage = () => {
     return (
         <>
             <PageHeader
+                className="bg-slate-50/50 pt-28 lg:pt-32 pb-8"
                 eyebrow="Kontak"
                 title="Saluran komunikasi dan kolaborasi Binar Foundation"
                 description="Halaman ini memuat media sosial, kontak merchandise, jalur kolaborasi resmi, serta wadah aspirasi untuk terhubung dengan tim Binar."
@@ -198,13 +199,13 @@ const ContactPage = () => {
 
                         {/* ROW 3: SOP KOLABORASI (FULL WIDTH) */}
                         <div className="rounded-[2rem] border border-blue-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md overflow-hidden flex flex-col lg:flex-row mt-2">
-                            <div className="lg:w-1/3 bg-slate-900 p-8 flex flex-col justify-center relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
-                                <span className="relative z-10 inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full shadow-sm mb-4 w-max border border-white/20 backdrop-blur-sm">Kerja Sama</span>
-                                <h3 className="relative z-10 text-2xl font-extrabold text-white mb-3">SOP Kolaborasi Kemitraan</h3>
-                                <p className="relative z-10 text-sm text-slate-300 leading-relaxed mb-8">Hubungi PJ resmi sesuai klasifikasi wilayah Anda untuk transparansi alur birokrasi kemitraan Binar Foundation.</p>
+                            <div className="lg:w-1/3 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 flex flex-col justify-center relative overflow-hidden border-r border-blue-100">
+                                <div className="absolute top-0 right-0 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+                                <span className="relative z-10 inline-block bg-white text-blue-600 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full shadow-sm mb-4 w-max border border-blue-100">Kerja Sama</span>
+                                <h3 className="relative z-10 text-2xl font-extrabold text-slate-900 mb-3">SOP Kolaborasi Kemitraan</h3>
+                                <p className="relative z-10 text-sm text-slate-600 leading-relaxed mb-8">Hubungi PJ resmi sesuai klasifikasi wilayah Anda untuk transparansi alur birokrasi kemitraan Binar Foundation.</p>
                                 <a href="mailto:binarfoundation1@gmail.com"
-                                    className="relative z-10 inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-blue-500 shadow-md gap-2 w-max group">
+                                    className="relative z-10 inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-blue-700 shadow-md shadow-blue-600/20 gap-2 w-max group">
                                     Ajukan Proposal Via Email <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                                 </a>
                             </div>

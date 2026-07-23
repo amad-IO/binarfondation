@@ -69,6 +69,7 @@ const DonatePage = () => {
     return (
         <>
             <PageHeader
+                className="bg-slate-50/50 pt-28 lg:pt-32 pb-8"
                 eyebrow="Donasi & Transparansi"
                 title="Satu Donasi, Wujudkan Banyak Kebaikan"
                 description="Setiap rupiah yang kamu berikan akan diakumulasikan ke dalam dana abadi Binar Foundation untuk mendukung pendidikan dan kesehatan mental."
@@ -174,9 +175,6 @@ const DonatePage = () => {
                     {/* SEKSI LAPORAN ANGGARAN (ACCORDION) */}
                     <div className="max-w-4xl mx-auto space-y-4">
                         <div className="flex items-center gap-3 border-b border-slate-200 pb-3">
-                            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100/40">
-                                <PieChart size={18} className="stroke-[2.25]" />
-                            </div>
                             <div>
                                 <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">Laporan Penggunaan Anggaran</h2>
                                 <p className="text-xs text-slate-400 mt-0.5">Bentuk akuntabilitas finansial pengurus pusat dan daerah</p>
