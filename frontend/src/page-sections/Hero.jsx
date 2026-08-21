@@ -130,9 +130,9 @@ const Hero = () => {
                             <Button
                                 variant="outline"
                                 className="flex-1 sm:flex-none text-sm whitespace-nowrap"
-                                onClick={() => navigate('/relawan')}
+                                onClick={() => navigate('/program#teman-sembuh')}
                             >
-                                Jadi Relawan
+                                Daftar Konseling
                             </Button>
                             <Button
                                 variant="accent"

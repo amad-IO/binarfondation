@@ -61,21 +61,21 @@ const AboutPage = () => {
                                 {/* Latar Belakang Biru / Card Effect */}
                                 <div className="absolute inset-0 bg-blue-600 rounded-[2.5rem] transform translate-x-4 translate-y-4 shadow-lg group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500 ease-out"></div>
                                 
-                                {/* Bingkai Gambar (Tumpukan Foto) */}
                                 <div className="aspect-[4/5] rounded-[2rem] bg-white p-3 shadow-2xl relative z-10 transform rotate-[8deg] group-hover:rotate-0 transition-all duration-500 ease-out origin-center">
                                     <Swiper
                                         effect={'cards'}
-                                        grabCursor={true}
+                                        allowTouchMove={false}
+                                        onClick={(swiper) => swiper.slideNext()}
                                         loop={true}
                                         modules={[EffectCards]}
-                                        className="w-full h-full rounded-xl overflow-hidden"
+                                        className="w-full h-full rounded-xl overflow-hidden cursor-pointer"
                                     >
                                         <SwiperSlide>
                                             <img src="/1.webp" alt="Sejarah Binar 1" className="w-full h-full object-cover" />
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <img src="/2.webp" alt="Sejarah Binar 2" className="w-full h-full object-cover" />
-                                        </SwiperSlide>
+                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <img src="/5.jpg" alt="Sejarah Binar 3" className="w-full h-full object-cover" />
                                         </SwiperSlide>

@@ -1,10 +1,43 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { client, urlFor } from '../lib/sanityClient';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { upcomingActivities } from '../data/content';
 import { motion } from 'framer-motion';
 
 const UpcomingActivities = () => {
-    const activeActivities = upcomingActivities.filter(item => item.status === 'active');
+    const [sanityActivities, setSanityActivities] = useState([]);
+
+    useEffect(() => {
+        const fetchActivities = async () => {
+            try {
+                const results = await client.fetch(`*[_type == "program" && isActive == true] | order(_createdAt desc)`);
+                setSanityActivities(results);
+            } catch (error) {
+                console.error("Error fetching upcoming activities:", error);
+            }
+        };
+        fetchActivities();
+    }, []);
+
+    const hardcodedActivities = upcomingActivities.filter(item => item.status === 'active');
+    const activeActivities = [
+        ...sanityActivities.map(event => {
+            let category = 'lainnya';
+            if (event.type === 'volunteer') category = 'relawan';
+            if (event.type === 'seminar' || event.type === 'webinar') category = 'edukasi';
+            
+            return {
+                id: event._id,
+                title: event.title,
+                category: category,
+                status: event.isActive ? 'active' : 'inactive',
+                date: event.date ? new Date(event.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Segera Hadir',
+                image: event.poster ? urlFor(event.poster).url() : '',
+            };
+        }),
+        ...hardcodedActivities
+    ];
 
     return (
         <section className="w-full py-10 lg:py-14 bg-white border-b border-slate-100">

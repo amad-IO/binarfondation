@@ -4,21 +4,21 @@ import PageHeader from '../components/PageHeader';
 
 const BUDGET_DATA = [
     {
-        category: 'Pengurus Pusat',
+        category: 'Binar Pusat',
         reports: [
             { year: 'Tahun 2025', detail: 'Alokasi operasional program utama, website development, pengadaan sistem peer-support, dan manajemen pengurus.' },
             { year: 'Tahun 2026', detail: 'Peningkatan kapasitas server konseling online, ekspansi kurikulum edukasi, dan pendampingan intensif minat bakat.' }
         ]
     },
     {
-        category: 'Pengurus Chapter Jatim',
+        category: 'Chapter Jawa Timur',
         reports: [
             { year: 'Tahun 2025', detail: 'Pendanaan Rumah Belajar Kampung Pemulung & Dolly, serta pengadaan modul ajar karakter anak marginal.' },
             { year: 'Tahun 2026', detail: 'Optimalisasi fasilitas Rumah Belajar KBM Petojo, perluasan jangkauan psikologi komunitas, dan aktivitas sosial CFD.' }
         ]
     },
     {
-        category: 'Pengurus Chapter Riau',
+        category: 'Chapter Riau',
         reports: [
             { year: 'Tahun 2025', detail: 'Inisiasi Rumah Belajar Al-Muzakki, pengadaan alat tulis dasar, dan edukasi kesehatan mental skala sekolah.' },
             { year: 'Tahun 2026', detail: 'Pengembangan kapasitas pengajar relawan lokal, peningkatan sarana belajar, dan kampanye sosial offline.' }
@@ -206,22 +206,14 @@ const DonatePage = () => {
                                         {/* ACCORDION BODY */}
                                         {isOpen && (
                                             <div className="border-t border-slate-100 bg-slate-50/30 p-4 lg:p-5">
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                    {item.reports.map((report, rIdx) => (
-                                                        <div
-                                                            key={rIdx}
-                                                            className="bg-white p-4 rounded-xl border border-slate-100 shadow-3xs flex flex-col justify-between space-y-3"
-                                                        >
-                                                            <div className="space-y-2">
-                                                                <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-                                                                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
-                                                                        {report.year}
-                                                                    </span>
-                                                                </div>
-                                                                <p className="text-xs leading-relaxed text-slate-500">{report.detail}</p>
-                                                            </div>
-                                                        </div>
-                                                    ))}
+                                                <div className="w-full h-64 flex flex-col items-center justify-center bg-white rounded-xl border border-dashed border-slate-200">
+                                                    <PieChart size={32} className="text-slate-300 mb-2" />
+                                                    <p className="text-sm font-medium text-slate-500">
+                                                        Grafik Keuangan Interaktif akan ditampilkan di sini.
+                                                    </p>
+                                                    <p className="text-xs text-slate-400 mt-1">
+                                                        Menarik data secara real-time dari Sanity...
+                                                    </p>
                                                 </div>
                                             </div>
                                         )}

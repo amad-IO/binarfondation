@@ -1,12 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { client, urlFor } from '../lib/sanityClient';
 import { ArrowRight, Calendar, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
 import EventModal from '../components/EventModal';
 import { upcomingActivities, articles } from '../data/content';
 
 const ArticlesAndRecruitment = () => {
-    const edukasiEvents = upcomingActivities.filter(item => item.category === 'edukasi' && item.status === 'active');
+    const [sanityEdukasiEvents, setSanityEdukasiEvents] = useState([]);
     const [selectedEvent, setSelectedEvent] = useState(null);
+
+    useEffect(() => {
+        const fetchEdukasiEvents = async () => {
+            try {
+                const results = await client.fetch(`*[_type == "program" && (type == "seminar" || type == "webinar") && isActive == true] | order(_createdAt desc)`);
+                setSanityEdukasiEvents(results);
+            } catch (error) {
+                console.error("Error fetching edukasi events:", error);
+            }
+        };
+        fetchEdukasiEvents();
+    }, []);
+
+    const hardcodedEvents = upcomingActivities.filter(item => item.category === 'edukasi' && item.status === 'active');
+    const edukasiEvents = [
+        ...sanityEdukasiEvents.map(event => ({
+            id: event._id,
+            title: event.title,
+            description: event.description,
+            date: event.date ? new Date(event.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Segera Hadir',
+            image: event.poster ? urlFor(event.poster).url() : '',
+            registrationLink: event.registrationLink
+        })),
+        ...hardcodedEvents
+    ];
 
     return (
         <section id="edukasi" className="w-full pb-16 lg:pb-24">

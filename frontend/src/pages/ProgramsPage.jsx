@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { client, urlFor } from '../lib/sanityClient';
 import { 
     Building2, GraduationCap, Image as ImageIcon, MessagesSquare, Sprout, UsersRound, 
     Heart, Sparkles, Calendar, Compass, Trophy, Gift, Target, 
@@ -95,6 +96,19 @@ const LOGOS = [
 
 const ProgramsPage = () => {
     const [activeTab, setActiveTab] = useState('internal');
+    const [sanityLogos, setSanityLogos] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const logos = await client.fetch(`*[_type == "collaboration"] | order(_createdAt desc)`);
+                setSanityLogos(logos);
+            } catch (error) {
+                console.error("Error fetching Sanity data:", error);
+            }
+        };
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -231,6 +245,56 @@ const ProgramsPage = () => {
                         </div>
                     </div>
 
+                    {/* SECTION: TEMAN SEMBUH (LAYANAN KONSELING) */}
+                    <div id="teman-sembuh" className="rounded-2xl border border-blue-100 bg-blue-50/50 p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center my-8">
+                        {/* KOLOM KIRI: Deskripsi & Tombol */}
+                        <div className="flex flex-col gap-4">
+                            <div className="flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
+                                    <Heart size={16} className="fill-blue-600" />
+                                </span>
+                                <h2 className="text-xl font-bold text-slate-900">Konseling Teman Sembuh</h2>
+                            </div>
+                            <p className="text-sm text-slate-600 leading-relaxed lg:max-w-md mb-2">
+                                Dukungan kesehatan mental <i>peer support</i> (sebaya) bersama Bi-Friend terlatih, dengan jaminan kerahasiaan penuh untuk Anda.
+                            </p>
+                            <a 
+                                href="https://wa.me/6281371152087" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-3 px-6 rounded-xl transition-all shadow-sm w-full sm:w-fit"
+                            >
+                                <MessagesSquare size={16} />
+                                Daftar Sekarang
+                            </a>
+                        </div>
+
+                        {/* KOLOM KANAN: 3 Kotak Susun */}
+                        <div className="flex flex-col gap-3">
+                            <div className="bg-white p-4 rounded-xl border border-blue-50 shadow-xs flex items-center gap-4">
+                                <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm shrink-0">1</div>
+                                <div>
+                                    <h3 className="font-bold text-slate-900 text-sm mb-0.5">Hubungi Admin</h3>
+                                    <p className="text-xs text-slate-500 leading-tight">Kirim pesan singkat ke Elsa Nabila.</p>
+                                </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-xl border border-blue-50 shadow-xs flex items-center gap-4">
+                                <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm shrink-0">2</div>
+                                <div>
+                                    <h3 className="font-bold text-slate-900 text-sm mb-0.5">Penjadwalan</h3>
+                                    <p className="text-xs text-slate-500 leading-tight">Pilih jadwal luang konseling.</p>
+                                </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-xl border border-blue-50 shadow-xs flex items-center gap-4">
+                                <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm shrink-0">3</div>
+                                <div>
+                                    <h3 className="font-bold text-slate-900 text-sm mb-0.5">Sesi Dimulai</h3>
+                                    <p className="text-xs text-slate-500 leading-tight">Sesi konseling online dimulai.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* SECTION 3: MITRA KOLABORASI */}
                     <div>
                         <div className="mb-6 lg:mb-8">
@@ -240,6 +304,15 @@ const ProgramsPage = () => {
                         
                         {/* Kumpulan Logo Kolaborasi */}
                         <div className="mb-10 lg:mb-12 flex flex-wrap justify-center gap-4 lg:gap-6">
+                            {/* Logo dari Sanity (Dinamis) */}
+                            {sanityLogos.map((logo, idx) => (
+                                <div key={`sanity-${idx}`} className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-slate-200 shadow-sm bg-white hover:shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center p-2 sm:p-3 relative group">
+                                    {logo.logo && <img src={urlFor(logo.logo).url()} alt={logo.name || `Mitra`} className="w-full h-full object-contain rounded-full mix-blend-multiply" />}
+                                    <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+                                </div>
+                            ))}
+                            
+                            {/* Logo Lama (Hardcoded) */}
                             {LOGOS.map((src, idx) => (
                                 <div key={idx} className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-slate-200 shadow-sm bg-white hover:shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center p-2 sm:p-3 relative group">
                                     <img src={src} alt={`Mitra Kolaborasi ${idx + 1}`} className="w-full h-full object-contain rounded-full mix-blend-multiply" />

@@ -9,6 +9,7 @@ const navLinks = [
     { name: 'Program', to: '/program' },
     { name: 'Edukasi', to: '/edukasi' },
     { name: 'Relawan', to: '/relawan' },
+    { name: 'Galeri', to: '/galeri' },
     { name: 'Donasi', to: '/donasi' },
 ];
 

@@ -42,7 +42,7 @@ export const upcomingActivities = [
         description: "Kami membuka kesempatan untuk kamu yang siap untuk berkontribusi dalam kegiatan Hari Anak Nasional 2026, yang akan diadakan di Kampung Dolly Surabaya. Bergabunglah untuk memberikan pengalaman yang menyenangkan dan edukatif bagi anak-anak Di Kampung Dolly.",
         registrationLink: "https://bit.ly/VolunteerHAN2026", // Dummy link
         image: "/hari_anak.jpeg", // Dummy poster
-        status: "active" 
+        status: "finished" 
     }
 ];
 

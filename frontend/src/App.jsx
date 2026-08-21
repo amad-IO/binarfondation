@@ -5,6 +5,7 @@ import AboutPage from './pages/AboutPage';
 import ProgramsPage from './pages/ProgramsPage';
 import EducationPage from './pages/EducationPage';
 import VolunteerPage from './pages/VolunteerPage';
+import GalleryPage from './pages/GalleryPage';
 import DonatePage from './pages/DonatePage';
 import ContactPage from './pages/ContactPage';
 
@@ -18,6 +19,7 @@ function App() {
                     <Route path="program" element={<ProgramsPage />} />
                     <Route path="edukasi" element={<EducationPage />} />
                     <Route path="relawan" element={<VolunteerPage />} />
+                    <Route path="galeri" element={<GalleryPage />} />
                     <Route path="donasi" element={<DonatePage />} />
                     <Route path="kontak" element={<ContactPage />} />
                 </Route>

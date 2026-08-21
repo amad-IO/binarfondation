@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { client, urlFor } from '../lib/sanityClient';
 import { ArrowRight, CheckCircle2, ClipboardList, HeartHandshake, Users2, Calendar } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import EventModal from '../components/EventModal';
@@ -13,8 +14,36 @@ const volunteerPoints = [
 
 
 const VolunteerPage = () => {
-    const relawanEvents = upcomingActivities.filter(item => item.category === 'relawan' && item.status === 'active');
+    const [sanityEvents, setSanityEvents] = useState([]);
     const [selectedEvent, setSelectedEvent] = useState(null);
+
+    useEffect(() => {
+        const fetchVolunteerEvents = async () => {
+            try {
+                const results = await client.fetch(`*[_type == "program" && type == "volunteer" && isActive == true] | order(_createdAt desc)`);
+                setSanityEvents(results);
+            } catch (error) {
+                console.error("Error fetching volunteer events:", error);
+            }
+        };
+        fetchVolunteerEvents();
+    }, []);
+
+    // Gabungkan data hardcoded lama dengan data baru dari Sanity
+    const hardcodedEvents = upcomingActivities.filter(item => item.category === 'relawan' && item.status === 'active');
+    const combinedEvents = [
+        ...sanityEvents.map(event => ({
+            id: event._id,
+            title: event.title,
+            description: event.description,
+            date: event.date ? new Date(event.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Segera Hadir',
+            image: event.poster ? urlFor(event.poster).url() : '',
+            registrationLink: event.registrationLink
+        })),
+        ...hardcodedEvents
+    ];
+
+    const relawanEvents = combinedEvents;
 
     return (
         <>

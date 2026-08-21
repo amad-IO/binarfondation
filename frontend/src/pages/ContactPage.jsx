@@ -27,9 +27,9 @@ const YoutubeIcon = (props) => (
 );
 
 const SOCIAL_MEDIA = [
-    { title: 'Instagram', value: '@binar.foundation', href: 'https://www.instagram.com/binar.community', icon: InstagramIcon, color: 'bg-pink-100 text-pink-600' },
-    { title: 'TikTok', value: '@binar.foundation', href: 'https://www.tiktok.com/@binar.community', icon: TikTokIcon, color: 'bg-slate-200 text-slate-900' },
-    { title: 'YouTube', value: 'binar foundation', href: 'https://www.youtube.com', icon: YoutubeIcon, color: 'bg-red-100 text-red-600' },
+    { title: 'Instagram', value: '@binar.foundation', href: 'https://www.instagram.com/binar.foundation', icon: InstagramIcon, color: 'bg-pink-100 text-pink-600' },
+    { title: 'TikTok', value: '@binar.foundation', href: 'https://www.tiktok.com/@binar.foundation', icon: TikTokIcon, color: 'bg-slate-200 text-slate-900' },
+    { title: 'YouTube', value: 'binar foundation', href: 'https://www.youtube.com/@binar.foundation', icon: YoutubeIcon, color: 'bg-red-100 text-red-600' },
 ];
 
 const CONTACT_ITEMS = [
@@ -39,7 +39,7 @@ const CONTACT_ITEMS = [
 
 const COLLABORATION_CONTACTS = [
     { name: 'Elsa Nabila', phone: '0823 8451 6469', role: 'PJ Kolaborasi Binar Foundation' },
-    { name: 'Lulu', phone: '0821 8310 0744', role: 'PJ Kolaborasi Binar Chapter' },
+    { name: 'Lucky Marpaung', phone: '0821 8310 0744', role: 'PJ Kolaborasi Binar Chapter' },
     { name: 'Nabila Cahya', phone: '0856 4833 0433', role: 'PJ Kolaborasi Binar Chapter' },
 ];
 
