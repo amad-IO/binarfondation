@@ -1,6 +1,7 @@
 import {defineCliConfig} from 'sanity/cli'
 
 export default defineCliConfig({
+  studioHost: 'binarfoundation',
   api: {
     projectId: 'sqzxcjql',
     dataset: 'production'
